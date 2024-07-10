@@ -14,7 +14,6 @@ class OtpFieldWidget extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpFieldWidget> {
-  TextEditingController otpController = TextEditingController();
 
   final defaultPinTheme = PinTheme(
     width: 56,
@@ -32,11 +31,14 @@ class _OtpScreenState extends State<OtpFieldWidget> {
   Color borderColor = const Color.fromRGBO(23, 171, 144, 0.4);
   @override
   Widget build(BuildContext context) {
-    return  Pinput(
-        controller: otpController,
+    var cubit=context.read<OtpCubit>();
+    return  BlocBuilder<OtpCubit, OtpState>(
+  builder: (context, state) {
+    return Pinput(
+        controller: cubit.otpController,
         validator: (val){
           if(val!.isEmpty){
-            return S.of(context).enterValidOtp;
+            return S.current.enterValidOtp;
           }else{
             return null;
           }
@@ -63,14 +65,20 @@ class _OtpScreenState extends State<OtpFieldWidget> {
             border: Border.all(color: focusedBorderColor),
           ),
         ),
-        errorPinTheme: defaultPinTheme.copyBorderWith(
-          border: Border.all(color: Colors.red),
+        errorPinTheme: defaultPinTheme.copyWith(
+          decoration: defaultPinTheme.decoration!.copyWith(
+            // color: Colors.red,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.red),
+          ),
         ),
         showCursor: true,
-        onCompleted: (pin) => validateThenDoFunc(context));
+        onCompleted: (pin) => validateThenDoFunc(context,cubit));
+  },
+);
   }
 
-  void validateThenDoFunc(BuildContext context) {
+  void validateThenDoFunc(BuildContext context,cubit) {
      if ( context.read<OtpCubit>().formKey.currentState!.validate()) {
       // context.read<RegisterCubit>().emitConfirmOtp();
     }

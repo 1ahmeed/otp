@@ -10,17 +10,23 @@ class ResendTimerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return   BlocBuilder<OtpCubit, OtpState>(
+      // buildWhen: (previous, current) {
+      //   current !=previous;
+      //   return ;
+      // },
   builder: (context, state) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(S.of(context).resendAfter,
+        Text(S.current.resendAfter,
             style: Styles.textStyle15Black),
         const SizedBox(
           width: 10,
         ),
-        Text("${context.read<OtpCubit>().counter} ${S.of(context).seconds}",
+        if(state is ChangeTimerState)
+        Text("${state.counter} ${S.of(context).seconds}",
             style: Styles.textStyle15Black.copyWith(
                 color: Colors.deepPurple,
                 fontWeight: FontWeight.bold)),

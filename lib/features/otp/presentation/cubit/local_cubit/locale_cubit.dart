@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+ import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/change_lang_use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/get_saved_lang_use_case.dart';

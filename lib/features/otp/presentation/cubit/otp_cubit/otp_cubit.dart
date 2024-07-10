@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
-
 part 'otp_state.dart';
 
 class OtpCubit extends Cubit<OtpState> {
@@ -13,6 +12,8 @@ class OtpCubit extends Cubit<OtpState> {
   static OtpCubit? get(context) => BlocProvider.of(context);
 
   final formKey=GlobalKey<FormState>();
+  final TextEditingController otpController = TextEditingController();
+
 
 
   int counter = 60;
@@ -25,8 +26,10 @@ class OtpCubit extends Cubit<OtpState> {
             timer.cancel();
           } else {
             if (counter > 0) {
-              counter--;
-              emit(ChangeTimerState());
+              counter =counter-1;
+              emit(ChangeTimerState(
+                counter: counter
+              ));
             }
           }
         });

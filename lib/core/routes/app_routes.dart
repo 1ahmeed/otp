@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/otp_screen.dart';
 import '../../core/utils/app_string.dart';
-import '../../injection_container.dart' as di ;
 
 
 class Routes {

@@ -8,7 +8,6 @@ import 'package:otp_creative_minds/core/routes/app_routes.dart';
 import 'generated/l10n.dart';
 import 'injection_container.dart' as di;
  import 'injection_container.dart';
-import 'locale/app_localizations.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();

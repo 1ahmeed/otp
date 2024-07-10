@@ -28,6 +28,7 @@ class _OTPScreenState extends State<OTPScreen> {
       create: (context) => OtpCubit()..startTimer(mounted:mounted),
       child: BlocBuilder<OtpCubit, OtpState>(
         builder: (context, state) {
+          var cubit=context.read<OtpCubit>();
           return Scaffold(
             appBar: buildAppBar(context),
             body: Padding(
@@ -44,7 +45,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         style: Styles.textStyle20Red,
                       ),
                       Text(
-                        S.of(context).enterVerificationCode,
+                        S.current.enterVerificationCode,
                         style: Styles.textStyle15Grey,
                       ),
                       const SizedBox(
@@ -60,13 +61,9 @@ class _OTPScreenState extends State<OTPScreen> {
                           backgroundColor: Colors.deepPurple[900],
                           textColor: Colors.white,
                           onPressed: () {
-                            if (context
-                                .read<OtpCubit>()
-                                .formKey
-                                .currentState!
-                                .validate()) {}
+                            if (cubit.formKey.currentState!.validate()) {}
                           },
-                          text: S.of(context).check),
+                          text: S.current.check),
                       const SizedBox(
                         height: 20,
                       ),
