@@ -1,0 +1,9 @@
+{
+  "verificationCode":"verification code",
+  "enterVerificationCode":"Enter the verification code sent to your mobile phone",
+  "check":"Check",
+  "resendAfter":"Resend after",
+  "seconds":"seconds",
+  "enterValidOtp":"Enter Valid Otp"
+
+}

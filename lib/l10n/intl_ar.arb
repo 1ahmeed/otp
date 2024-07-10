@@ -1,0 +1,8 @@
+{
+  "verificationCode":"رمز التحقق",
+  "enterVerificationCode":"ادخل رمز التحقق المرسل على جوالك",
+  "check":"تحقق",
+  "resendAfter":"اعاده رسال بعد",
+  "seconds":"ثواني",
+  "enterValidOtp":"ادخل كود التحقق بشكل صحيح"
+}
