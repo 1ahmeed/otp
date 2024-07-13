@@ -8,7 +8,11 @@ abstract class Styles {
   static final textStyle15Grey = TextStyle(fontSize: 15, color: Colors.grey[900]);
   static const textStyle15Black =  TextStyle(
       fontSize: 16,
-    color: Colors.black
+      color: Colors.black
+  );
+  static const textStyle15DeepPurple =  TextStyle(
+      fontSize: 16,
+      color: Colors.deepPurple
   );
 
 }

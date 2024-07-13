@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_creative_minds/core/utils/app_string.dart';
 import 'package:otp_creative_minds/core/utils/constants.dart';
 import 'package:otp_creative_minds/core/utils/styles.dart';
+import 'package:otp_creative_minds/features/otp/presentation/bloc/app_bloc.dart';
 import 'package:otp_creative_minds/features/otp/presentation/cubit/otp_cubit/otp_cubit.dart';
 import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_button_otp.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../generated/l10n.dart';
-import '../cubit/local_cubit/locale_cubit.dart';
+
 import '../widgets/otp_field_widget.dart';
 import '../widgets/resend_timer_widget.dart';
 
@@ -42,11 +43,17 @@ class _OTPScreenState extends State<OTPScreen> {
                       ///text
                       Text(
                         S.of(context).verificationCode,
-                        style: Styles.textStyle20Red,
+                        style: Styles.textStyle20Red.copyWith(
+                            color: Constants.checkDarkMode(context)
+                                ? Theme.of(context).textTheme.bodyLarge!.color
+                                : null),
                       ),
                       Text(
                         S.current.enterVerificationCode,
-                        style: Styles.textStyle15Grey,
+                        style: Styles.textStyle15Grey.copyWith(
+                            color: Constants.checkDarkMode(context)
+                                ? Theme.of(context).textTheme.bodyLarge!.color
+                                : null),
                       ),
                       const SizedBox(
                         height: 60,
@@ -84,21 +91,39 @@ class _OTPScreenState extends State<OTPScreen> {
     return AppBar(
             title: const Text(""),
             centerTitle: true,
-            leading: IconButton(
-              icon: Icon(
-                Icons.translate_outlined,
-                color: AppColors.primary,
-              ),
-              onPressed: () {
-                if (Constants.checkArabic()) {
-                  LocaleCubit.get(context)!
-                      .changeLanguage(AppStrings.englishCode);
-                } else {
-                  LocaleCubit.get(context)!
-                      .changeLanguage(AppStrings.arabicCode);
-                }
-              },
-            ),
+      actions: [
+        IconButton(
+          icon: Icon(
+            Icons.dark_mode,
+            color: AppColors.primary,
+          ),
+          onPressed: ()  {
+            if (Constants.checkDarkMode(context)) {
+              context.read<AppBloc>().add(const AppEvent.changeModeEvent(false));
+              print("object mode ll");
+             } else {
+                context.read<AppBloc>().add(const AppEvent.changeModeEvent(true));
+              print("object mode dd");
+
+            }
+          },
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.translate_outlined,
+            color: AppColors.primary,
+          ),
+          onPressed: () {
+            if (Constants.checkArabic()) {
+              print("object en");
+              context.read<AppBloc>().add(AppEvent.changeLocaleEvent(AppStrings.englishCode));
+            } else {
+              context.read<AppBloc>().add(const AppEvent.changeLocaleEvent(AppStrings.arabicCode));
+              print("object ar");
+            }
+          },
+        ),
+      ],
           );
   }
 }

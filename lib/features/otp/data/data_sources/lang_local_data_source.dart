@@ -2,17 +2,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/utils/app_string.dart';
 
-abstract class LangLocalDataSource {
+abstract class LangAndModeDataSource {
 
   Future<bool> changeLang({required String langCode});
-
   Future<String> getSavedLang();
+
+  ///mode
+  Future<bool> changeMode({required bool isDark});
+
+  Future<bool> getSavedMode();
 }
 
-class LangLocalDataSourceImpl extends LangLocalDataSource {
+class LangAndModeDataSourceImpl extends LangAndModeDataSource {
   final SharedPreferences sharedPreferences;
 
-  LangLocalDataSourceImpl({required this.sharedPreferences});
+  LangAndModeDataSourceImpl({required this.sharedPreferences});
 
   @override
   Future<bool> changeLang({required String langCode}) async =>
@@ -26,5 +30,15 @@ class LangLocalDataSourceImpl extends LangLocalDataSource {
       AppStrings.englishCode:
       sharedPreferences.getString(
           AppStrings.locale)! ;
+
+  @override
+  Future<bool> changeMode({required bool isDark})async => await sharedPreferences.
+  setBool(AppStrings.mode, isDark);
+  @override
+  Future<bool> getSavedMode()async =>
+      sharedPreferences.getBool(AppStrings.mode)==null ?
+    false:
+  sharedPreferences.getBool(
+      AppStrings.mode)! ;
 
 }

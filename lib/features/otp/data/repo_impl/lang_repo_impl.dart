@@ -5,7 +5,7 @@ import '../../domain/repo/lang_repo.dart';
 import '../data_sources/lang_local_data_source.dart';
 
 class LangRepoImpl extends LangRepo {
-  final LangLocalDataSource langLocalDataSource;
+  final LangAndModeDataSource langLocalDataSource;
 
   LangRepoImpl({required this.langLocalDataSource});
 

@@ -5,6 +5,7 @@ import 'package:otp_creative_minds/features/otp/data/data_sources/lang_local_dat
 import 'package:otp_creative_minds/features/otp/data/repo_impl/lang_repo_impl.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/change_lang_use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/get_saved_lang_use_case.dart';
+import 'package:otp_creative_minds/features/otp/presentation/bloc/app_bloc.dart';
 import 'package:otp_creative_minds/features/otp/presentation/cubit/local_cubit/locale_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/api/api_consumer.dart';
@@ -22,9 +23,12 @@ final sl = GetIt.instance;
 /// core[api- network info]
 Future<void> initServiceLocator() async {
   //cubit
-  sl.registerFactory<LocaleCubit>(() =>LocaleCubit(
-    changeLangUseCase: sl(),
-    getSavedLangUseCase: sl()
+  // sl.registerFactory<LocaleCubit>(() =>LocaleCubit(
+  //   changeLangUseCase: sl(),
+  //   getSavedLangUseCase: sl()
+  // ));
+  sl.registerFactory<AppBloc>(() =>AppBloc(
+    langAndModeDataSource:sl()
   ));
 
   //use case
@@ -35,7 +39,7 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<LangRepo>(() => LangRepoImpl(langLocalDataSource: sl()));
 
   //data source
-  sl.registerLazySingleton<LangLocalDataSource>(() => LangLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<LangAndModeDataSource>(() => LangAndModeDataSourceImpl(sharedPreferences: sl()));
   //! Core
 
   sl.registerLazySingleton<NetworkInfo>(

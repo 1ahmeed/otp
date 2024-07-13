@@ -7,6 +7,10 @@ class Constants {
   static bool checkArabic() {
   return Intl.getCurrentLocale() == 'ar';
 }
+  static bool checkDarkMode(context)  {
+    var brightness =  Theme.of(context).brightness;
+    return brightness == Brightness.dark;
+  }
   static void showErrorDialog(
       {required BuildContext context, required String msg}) {
     showDialog(

@@ -7,9 +7,7 @@ abstract class LocalState  extends Equatable{
   List<Object?> get props => throw UnimplementedError();
 }
 
-class LocalInitial extends LocalState {
-
-}
+class LocalInitial extends LocalState {}
 
 class ChangeLocaleState extends LocalState{
   final Locale locale;

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:otp_creative_minds/core/routes/app_routes.dart';
- import 'package:otp_creative_minds/features/otp/presentation/cubit/local_cubit/locale_cubit.dart';
+import 'package:otp_creative_minds/core/utils/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'features/otp/presentation/bloc/app_bloc.dart';
 import 'generated/l10n.dart';
 import 'injection_container.dart' as di;
  import 'injection_container.dart';
@@ -15,7 +17,7 @@ void main()async {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
+      builder: (context) => const MyApp(), // Wrap your app
     ),
   );
 }
@@ -28,27 +30,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => di.sl<LocaleCubit>()..getSavedLanguage(),)
+        BlocProvider(create: (context) => di.sl<AppBloc>()
+          ..add(const AppEvent.getSavedLocaleEvent())
+           ..add(const AppEvent.getSavedModeEvent())
+          ,)
       ],
-      child: BlocBuilder<LocaleCubit, LocalState>(
+      child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
-          if(state is ChangeLocaleState) {
-            return MaterialApp(
-             locale: state.locale,
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-            // supportedLocales: const [Locale('en'), Locale('ar')],
-            // localizationsDelegates: const [
-            //   AppLocalizations.delegate,
-            //   GlobalMaterialLocalizations.delegate,
-            //   GlobalWidgetsLocalizations.delegate,
-            //   GlobalCupertinoLocalizations.delegate
-            // ],
+          return  MaterialApp(
+            locale:state.mapOrNull(
+              changeLocaleSuccess: (state) => Locale(state.langCode),
+              getSavedLocaleSuccess: (state) => Locale(state.langCode),
+            ),
+            theme:AppTheme.lightTheme ,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: state.mapOrNull(
+              changeModeSuccess: (state) => state.isDark?ThemeMode.dark:ThemeMode.light,
+              getSavedModeSuccess: (state) => state.isDark?ThemeMode.dark:ThemeMode.light,
+            ),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
             localeResolutionCallback: (deviceLocale, supportedLocales) {
               for (var locale in supportedLocales) {
                 if (deviceLocale != null &&
@@ -63,12 +69,14 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRoutes.onGenerateRoute,
           );
-          }else{
-            return SizedBox();
-          }
+
+
         },
       ),
     );
   }
 }
 
+/*
+
+ */
