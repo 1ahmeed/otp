@@ -19,19 +19,14 @@ class ResendTimerWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(S.current.resendAfter,
-            style: Styles.textStyle15Black.copyWith(
-                color: Constants.checkDarkMode(context) ?Theme.of(context).textTheme.bodyLarge!.color:null
-
-            )),
+            style: Theme.of(context).textTheme.displaySmall),
         const SizedBox(
           width: 10,
         ),
         if(state is ChangeTimerState)
           Text("${state.counter} ${S.of(context).seconds}",
-              style: Styles.textStyle15DeepPurple.copyWith(
-                  color: Constants.checkDarkMode(context) ?Theme.of(context).textTheme.bodyLarge!.color:null,
-                  fontWeight: FontWeight.bold)),
-      ],
+              style: Theme.of(context).textTheme.headlineLarge,
+          )],
     );
   },
 );

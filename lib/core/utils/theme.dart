@@ -1,65 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:otp_creative_minds/core/utils/app_color.dart';
+import 'package:otp_creative_minds/core/utils/styles.dart';
 
 import 'hex_color.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
-    primarySwatch: Colors.green,
-    scaffoldBackgroundColor: Colors.white,
-    appBarTheme: const AppBarTheme(
+    brightness: Brightness.light,
+
+    ///main colors
+    scaffoldBackgroundColor: AppColors.primary,
+
+    ///icon theme
+    iconTheme: IconThemeData(color: AppColors.black, size: 20),
+
+    ///app bar theme
+    appBarTheme:   AppBarTheme(
         titleSpacing: 20.0,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.primary,
         elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
           statusBarColor: Colors.white,
         ),
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           color: Colors.black,
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         )),
+
+    ///text theme
+    textTheme: TextTheme(
+        displayLarge: Styles.textStyle20Red,
+        displayMedium: Styles.textStyle15Grey,
+        displaySmall: Styles.textStyle15Black,
+        headlineLarge: Styles.textStyle15DeepPurple
+
+    ),
+
+    ///bottom navigate theme
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,
       backgroundColor: Colors.white,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        fontSize: 18.0,
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-      ),
-      // bodyMedium:,
-      // bodySmall:,
-      // displayLarge:,
-      // displayMedium:,
-      // displaySmall:,
-      // headlineLarge:,
-      // headlineMedium:,
-      // headlineSmall:,
-      // labelLarge:,
-      // labelMedium:,
-      // labelSmall:,
-      // titleLarge:,
-      // titleMedium:,
-      // titleSmall:,
 
-    ),
-      brightness: Brightness.light
+
   );
 
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: HexColor('333739'),
-    primarySwatch: Colors.green,
-      brightness: Brightness.dark,
+    brightness: Brightness.dark,
 
-    // backgroundColor: HexColor('333739'),
+    ///main colors
+    scaffoldBackgroundColor: AppColors.dark,
+
+    ///icon theme
+    iconTheme: IconThemeData(color: AppColors.primary),
+
+    ///app bar theme
     appBarTheme: AppBarTheme(
       backgroundColor: HexColor('333739'),
       titleSpacing: 20.0,
@@ -77,6 +80,16 @@ class AppTheme {
         color: Colors.white,
       ),
     ),
+    ///text theme
+    textTheme: TextTheme(
+      displayLarge: Styles.textStyle20Red.copyWith(color: AppColors.primary),
+      displayMedium:
+      Styles.textStyle15Grey.copyWith(color: AppColors.primary),
+      displaySmall:
+      Styles.textStyle15Black.copyWith(color: AppColors.primary),
+      headlineLarge: Styles.textStyle15DeepPurple.copyWith(color: AppColors.primary),
+    ),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.white,
@@ -84,15 +97,6 @@ class AppTheme {
       backgroundColor: HexColor('333739'),
     ),
 
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        color: Colors.white,
-        fontSize: 18.0,
-        fontWeight: FontWeight.w600,
-      ),
-      bodySmall: TextStyle(
-        color: Colors.white,
-      ),
-    ),
+
   );
 }

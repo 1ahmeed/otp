@@ -5,7 +5,7 @@ abstract class Styles {
       fontSize: 20,
       color: Colors.red[900]
   );
-  static final textStyle15Grey = TextStyle(fontSize: 15, color: Colors.grey[900]);
+  static final textStyle15Grey = TextStyle(fontSize: 15, color: Colors.grey[600]);
   static const textStyle15Black =  TextStyle(
       fontSize: 16,
       color: Colors.black

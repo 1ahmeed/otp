@@ -18,6 +18,7 @@ class _OtpScreenState extends State<OtpFieldWidget> {
   final defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
+
     textStyle: const TextStyle(
       fontSize: 22,
       color: Color.fromRGBO(30, 60, 87, 1),
@@ -67,7 +68,7 @@ class _OtpScreenState extends State<OtpFieldWidget> {
         ),
         errorPinTheme: defaultPinTheme.copyWith(
           decoration: defaultPinTheme.decoration!.copyWith(
-            // color: Colors.red,
+            color: fillColor,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: Colors.red),
           ),

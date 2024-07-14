@@ -4,10 +4,12 @@
 import 'package:flutter/material.dart';
 import 'hex_color.dart';
 
-class AppColors{
-  static Color primary = HexColor('#202053');
-  static Color hint=Colors.grey;
-  static Color backGround=Colors.white;
-  static Color colorAppBarText=Colors.black;
-
+class AppColors {
+  static Color primary =  Colors.white;
+  static Color dark =  const Color(0xff333739);
+  static Color black =  Colors.black;
+  static Color grey=Colors.grey;
+  static Color red=Colors.red;
+  static Color deepPurple=Colors.deepPurple[900]!;
 }
+

@@ -9,6 +9,7 @@ import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_butt
 import '../../../../core/utils/app_color.dart';
 import '../../../../generated/l10n.dart';
 
+import '../widgets/app_bar.dart';
 import '../widgets/otp_field_widget.dart';
 import '../widgets/resend_timer_widget.dart';
 
@@ -43,17 +44,12 @@ class _OTPScreenState extends State<OTPScreen> {
                       ///text
                       Text(
                         S.of(context).verificationCode,
-                        style: Styles.textStyle20Red.copyWith(
-                            color: Constants.checkDarkMode(context)
-                                ? Theme.of(context).textTheme.bodyLarge!.color
-                                : null),
+                        style:Theme.of(context).textTheme.displayLarge
                       ),
+                      const SizedBox(height: 10,),
                       Text(
                         S.current.enterVerificationCode,
-                        style: Styles.textStyle15Grey.copyWith(
-                            color: Constants.checkDarkMode(context)
-                                ? Theme.of(context).textTheme.bodyLarge!.color
-                                : null),
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 60,
@@ -65,8 +61,8 @@ class _OTPScreenState extends State<OTPScreen> {
                       ),
                       ///button
                       CustomButtonOtp(
-                          backgroundColor: Colors.deepPurple[900],
-                          textColor: Colors.white,
+                          backgroundColor: AppColors.deepPurple,
+                          textColor: AppColors.primary,
                           onPressed: () {
                             if (cubit.formKey.currentState!.validate()) {}
                           },
@@ -87,43 +83,5 @@ class _OTPScreenState extends State<OTPScreen> {
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-            title: const Text(""),
-            centerTitle: true,
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.dark_mode,
-            color: AppColors.primary,
-          ),
-          onPressed: ()  {
-            if (Constants.checkDarkMode(context)) {
-              context.read<AppBloc>().add(const AppEvent.changeModeEvent(false));
-              print("object mode ll");
-             } else {
-                context.read<AppBloc>().add(const AppEvent.changeModeEvent(true));
-              print("object mode dd");
 
-            }
-          },
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.translate_outlined,
-            color: AppColors.primary,
-          ),
-          onPressed: () {
-            if (Constants.checkArabic()) {
-              print("object en");
-              context.read<AppBloc>().add(AppEvent.changeLocaleEvent(AppStrings.englishCode));
-            } else {
-              context.read<AppBloc>().add(const AppEvent.changeLocaleEvent(AppStrings.arabicCode));
-              print("object ar");
-            }
-          },
-        ),
-      ],
-          );
-  }
 }

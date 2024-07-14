@@ -20,7 +20,7 @@ void main()async {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) =>   MyApp(), // Wrap your app
+      builder: (context) =>   const MyApp(), // Wrap your app
     ),
   );
 }
@@ -52,7 +52,6 @@ class MyApp extends StatelessWidget {
             theme:AppTheme.lightTheme ,
             darkTheme: AppTheme.darkTheme,
             themeMode: mode!=null? mode!?ThemeMode.dark:ThemeMode.light:null,
-
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
