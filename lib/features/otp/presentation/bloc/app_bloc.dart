@@ -25,7 +25,7 @@ final LangAndModeDataSource  langAndModeDataSource;
       },
           getSavedLocaleEvent: () async{
             String lang=await langAndModeDataSource.getSavedLang();
-            emit(AppState.getSavedLocaleSuccess(lang));
+            emit(AppState.changeLocaleSuccess(lang));
           },
         changeModeEvent: (isDark)  {
             langAndModeDataSource.changeMode(isDark: isDark);
@@ -33,7 +33,7 @@ final LangAndModeDataSource  langAndModeDataSource;
         },
         getSavedModeEvent: ()async {
           bool mode=await langAndModeDataSource.getSavedMode();
-          emit (AppState.getSavedModeSuccess(mode)) ;
+          emit (AppState.changeModeSuccess(mode)) ;
         },
       );
     });

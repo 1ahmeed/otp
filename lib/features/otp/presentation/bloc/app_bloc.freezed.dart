@@ -622,27 +622,21 @@ mixin _$AppState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
     required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
     TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
     TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -651,29 +645,21 @@ mixin _$AppState<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(_changeLocaleSuccess<T> value)
         changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
     required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
     TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -737,9 +723,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
     required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
   }) {
     return initial();
   }
@@ -749,9 +733,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
     TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
   }) {
     return initial?.call();
   }
@@ -761,9 +743,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
     TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -778,11 +758,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(_changeLocaleSuccess<T> value)
         changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
     required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
   }) {
     return initial(this);
   }
@@ -792,9 +768,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
   }) {
     return initial?.call(this);
   }
@@ -804,9 +778,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
     TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -888,9 +860,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
     required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
   }) {
     return changeLocaleSuccess(langCode);
   }
@@ -900,9 +870,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
     TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
   }) {
     return changeLocaleSuccess?.call(langCode);
   }
@@ -912,9 +880,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
     TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (changeLocaleSuccess != null) {
@@ -929,11 +895,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(_changeLocaleSuccess<T> value)
         changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
     required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
   }) {
     return changeLocaleSuccess(this);
   }
@@ -943,9 +905,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
   }) {
     return changeLocaleSuccess?.call(this);
   }
@@ -955,9 +915,7 @@ class _$changeLocaleSuccessImpl<T> implements _changeLocaleSuccess<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
     TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (changeLocaleSuccess != null) {
@@ -974,165 +932,6 @@ abstract class _changeLocaleSuccess<T> implements AppState<T> {
   String get langCode;
   @JsonKey(ignore: true)
   _$$changeLocaleSuccessImplCopyWith<T, _$changeLocaleSuccessImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$getSavedLocaleSuccessImplCopyWith<T, $Res> {
-  factory _$$getSavedLocaleSuccessImplCopyWith(
-          _$getSavedLocaleSuccessImpl<T> value,
-          $Res Function(_$getSavedLocaleSuccessImpl<T>) then) =
-      __$$getSavedLocaleSuccessImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({String langCode});
-}
-
-/// @nodoc
-class __$$getSavedLocaleSuccessImplCopyWithImpl<T, $Res>
-    extends _$AppStateCopyWithImpl<T, $Res, _$getSavedLocaleSuccessImpl<T>>
-    implements _$$getSavedLocaleSuccessImplCopyWith<T, $Res> {
-  __$$getSavedLocaleSuccessImplCopyWithImpl(
-      _$getSavedLocaleSuccessImpl<T> _value,
-      $Res Function(_$getSavedLocaleSuccessImpl<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? langCode = null,
-  }) {
-    return _then(_$getSavedLocaleSuccessImpl<T>(
-      null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$getSavedLocaleSuccessImpl<T> implements _getSavedLocaleSuccess<T> {
-  const _$getSavedLocaleSuccessImpl(this.langCode);
-
-  @override
-  final String langCode;
-
-  @override
-  String toString() {
-    return 'AppState<$T>.getSavedLocaleSuccess(langCode: $langCode)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$getSavedLocaleSuccessImpl<T> &&
-            (identical(other.langCode, langCode) ||
-                other.langCode == langCode));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, langCode);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$getSavedLocaleSuccessImplCopyWith<T, _$getSavedLocaleSuccessImpl<T>>
-      get copyWith => __$$getSavedLocaleSuccessImplCopyWithImpl<T,
-          _$getSavedLocaleSuccessImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
-    required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
-  }) {
-    return getSavedLocaleSuccess(langCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
-    TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
-  }) {
-    return getSavedLocaleSuccess?.call(langCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
-    TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
-    required TResult orElse(),
-  }) {
-    if (getSavedLocaleSuccess != null) {
-      return getSavedLocaleSuccess(langCode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(_changeLocaleSuccess<T> value)
-        changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
-    required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
-  }) {
-    return getSavedLocaleSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
-    TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
-  }) {
-    return getSavedLocaleSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
-    TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
-    required TResult orElse(),
-  }) {
-    if (getSavedLocaleSuccess != null) {
-      return getSavedLocaleSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _getSavedLocaleSuccess<T> implements AppState<T> {
-  const factory _getSavedLocaleSuccess(final String langCode) =
-      _$getSavedLocaleSuccessImpl<T>;
-
-  String get langCode;
-  @JsonKey(ignore: true)
-  _$$getSavedLocaleSuccessImplCopyWith<T, _$getSavedLocaleSuccessImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1204,9 +1003,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
     required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
   }) {
     return changeModeSuccess(isDark);
   }
@@ -1216,9 +1013,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
     TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
   }) {
     return changeModeSuccess?.call(isDark);
   }
@@ -1228,9 +1023,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
     TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (changeModeSuccess != null) {
@@ -1245,11 +1038,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(_changeLocaleSuccess<T> value)
         changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
     required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
   }) {
     return changeModeSuccess(this);
   }
@@ -1259,9 +1048,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
   }) {
     return changeModeSuccess?.call(this);
   }
@@ -1271,9 +1058,7 @@ class _$changeModeSuccessImpl<T> implements _changeModeSuccess<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
     TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
     TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
     required TResult orElse(),
   }) {
     if (changeModeSuccess != null) {
@@ -1290,161 +1075,5 @@ abstract class _changeModeSuccess<T> implements AppState<T> {
   bool get isDark;
   @JsonKey(ignore: true)
   _$$changeModeSuccessImplCopyWith<T, _$changeModeSuccessImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$getSavedModeSuccessImplCopyWith<T, $Res> {
-  factory _$$getSavedModeSuccessImplCopyWith(_$getSavedModeSuccessImpl<T> value,
-          $Res Function(_$getSavedModeSuccessImpl<T>) then) =
-      __$$getSavedModeSuccessImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({bool isDark});
-}
-
-/// @nodoc
-class __$$getSavedModeSuccessImplCopyWithImpl<T, $Res>
-    extends _$AppStateCopyWithImpl<T, $Res, _$getSavedModeSuccessImpl<T>>
-    implements _$$getSavedModeSuccessImplCopyWith<T, $Res> {
-  __$$getSavedModeSuccessImplCopyWithImpl(_$getSavedModeSuccessImpl<T> _value,
-      $Res Function(_$getSavedModeSuccessImpl<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isDark = null,
-  }) {
-    return _then(_$getSavedModeSuccessImpl<T>(
-      null == isDark
-          ? _value.isDark
-          : isDark // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$getSavedModeSuccessImpl<T> implements _getSavedModeSuccess<T> {
-  const _$getSavedModeSuccessImpl(this.isDark);
-
-  @override
-  final bool isDark;
-
-  @override
-  String toString() {
-    return 'AppState<$T>.getSavedModeSuccess(isDark: $isDark)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$getSavedModeSuccessImpl<T> &&
-            (identical(other.isDark, isDark) || other.isDark == isDark));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isDark);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$getSavedModeSuccessImplCopyWith<T, _$getSavedModeSuccessImpl<T>>
-      get copyWith => __$$getSavedModeSuccessImplCopyWithImpl<T,
-          _$getSavedModeSuccessImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String langCode) changeLocaleSuccess,
-    required TResult Function(String langCode) getSavedLocaleSuccess,
-    required TResult Function(bool isDark) changeModeSuccess,
-    required TResult Function(bool isDark) getSavedModeSuccess,
-  }) {
-    return getSavedModeSuccess(isDark);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String langCode)? changeLocaleSuccess,
-    TResult? Function(String langCode)? getSavedLocaleSuccess,
-    TResult? Function(bool isDark)? changeModeSuccess,
-    TResult? Function(bool isDark)? getSavedModeSuccess,
-  }) {
-    return getSavedModeSuccess?.call(isDark);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String langCode)? changeLocaleSuccess,
-    TResult Function(String langCode)? getSavedLocaleSuccess,
-    TResult Function(bool isDark)? changeModeSuccess,
-    TResult Function(bool isDark)? getSavedModeSuccess,
-    required TResult orElse(),
-  }) {
-    if (getSavedModeSuccess != null) {
-      return getSavedModeSuccess(isDark);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(_changeLocaleSuccess<T> value)
-        changeLocaleSuccess,
-    required TResult Function(_getSavedLocaleSuccess<T> value)
-        getSavedLocaleSuccess,
-    required TResult Function(_changeModeSuccess<T> value) changeModeSuccess,
-    required TResult Function(_getSavedModeSuccess<T> value)
-        getSavedModeSuccess,
-  }) {
-    return getSavedModeSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult? Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
-    TResult? Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult? Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
-  }) {
-    return getSavedModeSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(_changeLocaleSuccess<T> value)? changeLocaleSuccess,
-    TResult Function(_getSavedLocaleSuccess<T> value)? getSavedLocaleSuccess,
-    TResult Function(_changeModeSuccess<T> value)? changeModeSuccess,
-    TResult Function(_getSavedModeSuccess<T> value)? getSavedModeSuccess,
-    required TResult orElse(),
-  }) {
-    if (getSavedModeSuccess != null) {
-      return getSavedModeSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _getSavedModeSuccess<T> implements AppState<T> {
-  const factory _getSavedModeSuccess(final bool isDark) =
-      _$getSavedModeSuccessImpl<T>;
-
-  bool get isDark;
-  @JsonKey(ignore: true)
-  _$$getSavedModeSuccessImplCopyWith<T, _$getSavedModeSuccessImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

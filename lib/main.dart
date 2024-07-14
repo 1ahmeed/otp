@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:otp_creative_minds/core/routes/app_routes.dart';
+import 'package:otp_creative_minds/core/utils/app_string.dart';
+import 'package:otp_creative_minds/core/utils/cache_data.dart';
 import 'package:otp_creative_minds/core/utils/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'features/otp/presentation/bloc/app_bloc.dart';
@@ -13,21 +15,23 @@ import 'injection_container.dart' as di;
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
+  await CacheData.init();
   await initServiceLocator();  // runApp(const MyApp());
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
+      builder: (context) =>   MyApp(), // Wrap your app
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+    const MyApp({super.key});
+   static bool? mode=CacheData.getData(key: AppStrings.mode) ;
+    static String? lang=CacheData.getData(key: AppStrings.locale) ;
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => di.sl<AppBloc>()
@@ -35,19 +39,20 @@ class MyApp extends StatelessWidget {
            ..add(const AppEvent.getSavedModeEvent())
           ,)
       ],
-      child: BlocBuilder<AppBloc, AppState>(
+      child: BlocConsumer<AppBloc, AppState>(
+        listener: (context, state) {
+          state.whenOrNull(
+             changeModeSuccess: (isDark) => mode=isDark,
+              changeLocaleSuccess: (langCode) =>lang=langCode ,
+          );
+        },
         builder: (context, state) {
           return  MaterialApp(
-            locale:state.mapOrNull(
-              changeLocaleSuccess: (state) => Locale(state.langCode),
-              getSavedLocaleSuccess: (state) => Locale(state.langCode),
-            ),
+            locale:lang!=null? Locale(lang!):  null,
             theme:AppTheme.lightTheme ,
             darkTheme: AppTheme.darkTheme,
-            themeMode: state.mapOrNull(
-              changeModeSuccess: (state) => state.isDark?ThemeMode.dark:ThemeMode.light,
-              getSavedModeSuccess: (state) => state.isDark?ThemeMode.dark:ThemeMode.light,
-            ),
+            themeMode: mode!=null? mode!?ThemeMode.dark:ThemeMode.light:null,
+
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
