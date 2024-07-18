@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/constants.dart';
-import '../bloc/app_bloc.dart';
+import '../bloc/App_bloc/app_bloc.dart';
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(

@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+ import 'package:otp_creative_minds/features/otp/presentation/cubit/otp_cubit/otp_cubit.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../../generated/l10n.dart';
-import '../cubit/otp_cubit/otp_cubit.dart';
+// import '../cubit/otp_cubit/otp_cubit.dart';
 
 class OtpFieldWidget extends StatefulWidget {
   const OtpFieldWidget({super.key});
@@ -33,7 +34,7 @@ class _OtpScreenState extends State<OtpFieldWidget> {
   @override
   Widget build(BuildContext context) {
     var cubit=context.read<OtpCubit>();
-    return  BlocBuilder<OtpCubit, OtpState>(
+    return  BlocBuilder<OtpCubit, OtpsState>(
   builder: (context, state) {
     return Pinput(
         controller: cubit.otpController,

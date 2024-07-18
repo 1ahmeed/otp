@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
+import '../../../../core/api/failuer.dart';
 
 abstract class LangRepo{
 
-  Future<Either<Failure,bool>> changeLang({required String langCode});
-  Future<Either<Failure,String>> getSavedLang();
+  // Future<Either<Failures,bool>> changeLang({required String langCode});
+  // Future<Either<Failures,String>> getSavedLang();
 }

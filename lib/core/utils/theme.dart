@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:otp_creative_minds/core/utils/app_color.dart';
 import 'package:otp_creative_minds/core/utils/styles.dart';
 
-import 'hex_color.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(

@@ -21,24 +21,24 @@ class LangAndModeDataSourceImpl extends LangAndModeDataSource {
   @override
   Future<bool> changeLang({required String langCode}) async =>
       await sharedPreferences.
-      setString(AppStrings.locale, langCode);
+      setString(AppStrings.localeKey, langCode);
 
 
   @override
   Future<String> getSavedLang() async =>
-      sharedPreferences.getString(AppStrings.locale)==null ?
+      sharedPreferences.getString(AppStrings.localeKey)==null ?
       AppStrings.englishCode:
       sharedPreferences.getString(
-          AppStrings.locale)! ;
+          AppStrings.localeKey)! ;
 
   @override
   Future<bool> changeMode({required bool isDark})async => await sharedPreferences.
-  setBool(AppStrings.mode, isDark);
+  setBool(AppStrings.modeKey, isDark);
   @override
   Future<bool> getSavedMode()async =>
-      sharedPreferences.getBool(AppStrings.mode)==null ?
+      sharedPreferences.getBool(AppStrings.modeKey)==null ?
     false:
   sharedPreferences.getBool(
-      AppStrings.mode)! ;
+      AppStrings.modeKey)! ;
 
 }

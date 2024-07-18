@@ -1,8 +1,4 @@
-
-
-
 import 'package:flutter/material.dart';
-import 'hex_color.dart';
 
 class AppColors {
   static Color primary =  Colors.white;

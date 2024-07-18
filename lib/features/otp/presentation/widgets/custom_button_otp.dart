@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class CustomButtonOtp extends StatelessWidget {
-  const CustomButtonOtp(
+class CustomButtonCheckOtp extends StatelessWidget {
+  const CustomButtonCheckOtp(
       {required this.backgroundColor,
         this.borderRadius,
         required this.textColor,
