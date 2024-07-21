@@ -12,11 +12,9 @@ part 'otp_state.dart';
 
 class OtpCubit extends Cubit<OtpsState> {
   OtpCubit({required this.otpRepo}) : super(OtpInitial());
-
-  final OtpRepo otpRepo;
-
   static OtpCubit? get(context) => BlocProvider.of(context);
 
+  final OtpRepo otpRepo;
   final formKey = GlobalKey<FormState>();
   final TextEditingController otpController = TextEditingController();
 

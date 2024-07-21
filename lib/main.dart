@@ -11,7 +11,6 @@ import 'package:otp_creative_minds/features/otp/data/data_sources/lang_local_dat
 import 'package:shared_preferences/shared_preferences.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
 import 'generated/l10n.dart';
-import 'injection_container.dart' as di;
 
 
 void main() async {
@@ -30,7 +29,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-    MyApp({super.key, required this.sharedPreferences,  });
+    const MyApp({super.key, required this.sharedPreferences,  });
 final SharedPreferences sharedPreferences;
   static bool? mode = CacheData.getData(key: AppStrings.modeKey);
 

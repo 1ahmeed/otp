@@ -1,7 +1,6 @@
+
 import 'package:json_annotation/json_annotation.dart';
-
 part 'verify_otp_model.g.dart';
-
 @JsonSerializable()
 class VerifyOtpModel {
   Data? data;
@@ -16,82 +15,28 @@ class VerifyOtpModel {
       this.success,});
 
   factory VerifyOtpModel.fromJson(Map<String, dynamic> json) => _$VerifyOtpModelFromJson(json);
-
-
   Map<String, dynamic> toJson() => _$VerifyOtpModelToJson(this);
 
-}
 
+
+
+}
 @JsonSerializable()
 class Data {
+  Profile? profile;
+  String? token;
   Data({
       this.profile, 
       this.token,});
 
-  Profile? profile;
-  String? token;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-
-
   Map<String, dynamic> toJson() => _$DataToJson(this);
 
 }
+
 @JsonSerializable()
 class Profile {
-  int? id;
-  String? image;
-  String? birthdate;
-  dynamic hijriBirthdate;
-  String? phone;
-  String? countryCode;
-  String? countryName;
-  String? email;
-  String? name;
-  String? fullName;
-  String? residencyNumber;
-  String? residencyStatus;
-  int? nationalityId;
-  String? userNationality;
-  int? hasTax;
-  dynamic taxNumber;
-  String? paymentWays;
-  String? paymentWayValue;
-  String? paymentType;
-  String? bankAccountNumber;
-  String? entryTime;
-  String? exitTime;
-  String? entryTimeFull;
-  String? exitTimeFull;
-  String? currency;
-  int? cancellationReturnPolicyId;
-  int? completedProfile;
-  int? hasBookingConditions;
-  dynamic bookingConditionsText;
-  int? totalOrders;
-  String? rates;
-  int? blocks;
-  String? usageAgreementDate;
-  String? usageAgreementDay;
-  int? ownerTotalOrders;
-  int? ownerTotalFlats;
-  int? ownerSales;
-  String? ownerRates;
-  int? ownerBlocks;
-  int? isVerified;
-  String? registeredAt;
-  String? registeredYear;
-  int? contactusRoom;
-  int? ownerWallet;
-  int? userWallet;
-  int? isManager;
-  dynamic ownerId;
-  int? newNotifications;
-  int? ownerNewNotifications;
-  int? newChats;
-  int? ownerNewChats;
-  int? personaVerified;
-  String? personaVerifyLink;
   Profile({
       this.id, 
       this.image, 
@@ -128,6 +73,7 @@ class Profile {
       this.usageAgreementDate, 
       this.usageAgreementDay, 
       this.ownerTotalOrders, 
+      this.requestsDebts, 
       this.ownerTotalFlats, 
       this.ownerSales, 
       this.ownerRates, 
@@ -147,11 +93,64 @@ class Profile {
       this.personaVerified, 
       this.personaVerifyLink,});
 
+
+  int? id;
+  String? image;
+  String? birthdate;
+  dynamic hijriBirthdate;
+  String? phone;
+  String? countryCode;
+  @JsonKey(name: "country_name")
+  String? countryName;
+  String? email;
+  String? name;
+  String? fullName;
+  String? residencyNumber;
+  String? residencyStatus;
+  int? nationalityId;
+  @JsonKey(name: "user_nationality")
+  String? userNationality;
+  int? hasTax;
+  dynamic taxNumber;
+  String? paymentWays;
+  String? paymentWayValue;
+  String? paymentType;
+  String? bankAccountNumber;
+  String? entryTime;
+  String? exitTime;
+  String? entryTimeFull;
+  String? exitTimeFull;
+  String? currency;
+  int? cancellationReturnPolicyId;
+  int? completedProfile;
+  int? hasBookingConditions;
+  dynamic bookingConditionsText;
+  int? totalOrders;
+  String? rates;
+  int? blocks;
+  String? usageAgreementDate;
+  String? usageAgreementDay;
+  int? ownerTotalOrders;
+  int? requestsDebts;
+  int? ownerTotalFlats;
+  int? ownerSales;
+  String? ownerRates;
+  int? ownerBlocks;
+  int? isVerified;
+  String? registeredAt;
+  String? registeredYear;
+  int? contactusRoom;
+  int? ownerWallet;
+  int? userWallet;
+  int? isManager;
+  dynamic ownerId;
+  int? newNotifications;
+  int? ownerNewNotifications;
+  int? newChats;
+  int? ownerNewChats;
+  int? personaVerified;
+  String? personaVerifyLink;
+
   factory Profile.fromJson(Map<String, dynamic> json) => _$ProfileFromJson(json);
-
-
   Map<String, dynamic> toJson() => _$ProfileToJson(this);
-
-
-
 }

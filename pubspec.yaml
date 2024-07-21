@@ -49,6 +49,9 @@ dependencies:
   pinput: ^4.0.0
   retrofit: ^4.1.0
   device_preview:
+  iconly: ^1.0.1
+  font_awesome_flutter: ^10.7.0
+
   flutter_localizations:
       sdk: flutter
   intl: ^0.18.1
