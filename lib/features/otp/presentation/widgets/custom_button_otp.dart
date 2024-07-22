@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../cubit/otp_cubit/otp_cubit.dart';
 import '../screens/profile_screen.dart';
 
-
 class CustomButtonCheckOtp extends StatelessWidget {
-  const CustomButtonCheckOtp({required this.backgroundColor,
-    this.borderRadius,
-    required this.textColor,
-    required this.text,
-    this.fontSize,
-    super.key, this.onPressed});
+  const CustomButtonCheckOtp(
+      {required this.backgroundColor,
+      this.borderRadius,
+      required this.textColor,
+      required this.text,
+      this.fontSize,
+      super.key,
+      this.onPressed});
 
   final Color? backgroundColor;
   final BorderRadiusGeometry? borderRadius;
@@ -24,10 +27,9 @@ class CustomButtonCheckOtp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<OtpCubit, OtpsState>(
       listener: (context, state) {
-        if(state is VerifyOtpSuccessState){
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-              ProfileScreen(verifyOtpModel: state.verifyOtpModel!,)
-            ,));
+        if (state is VerifyOtpSuccessState) {
+          GoRouter.of(context)
+              .push(AppRouter.profileScreen, extra: state.verifyOtpModel);
         }
       },
       builder: (context, state) {

@@ -22,10 +22,10 @@ class CustomButtonResend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OtpCubit, OtpsState>(
-      buildWhen: (previous, current) {
-        return current is VerifyOtpErrorState ||
-            current is ChangeTimerState;
-      },
+      // buildWhen: (previous, current) {
+      //   return current is VerifyOtpErrorState || current is ResendOtpErrorState
+      //       || current is ChangeTimerState;
+      // },
       builder: (context, state) {
         if (state is ChangeTimerState) {
           return state.counter == 0
@@ -49,6 +49,25 @@ class CustomButtonResend extends StatelessWidget {
           )
               : const SizedBox();
         }else if (state is VerifyOtpErrorState) {
+          return SizedBox(
+            height: 60,
+            width: double.infinity,
+            child: TextButton(
+              onPressed: onPressed,
+              style: TextButton.styleFrom(
+                  backgroundColor: backgroundColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: borderRadius ?? BorderRadius.circular(12))),
+              child: Text(
+                text,
+                style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: fontSize),
+              ),
+            ),
+          );
+        }else if (state is ResendOtpErrorState) {
           return SizedBox(
             height: 60,
             width: double.infinity,

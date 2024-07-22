@@ -26,14 +26,15 @@ class _ResendTimerWidgetState extends State<ResendTimerWidget> {
           context.read<OtpCubit>().startTimer();
         }
       },
-      buildWhen: (previousState, currentState) {
-        return currentState is ChangeTimerState
-        ;
-      },
+      // buildWhen: (previousState, currentState) {
+      //   return currentState is ChangeTimerState
+      //       || currentState is ResendOtpLoadingState;
+      // },
       builder: (context, state) {
     if (state is ResendOtpLoadingState) {
           return const CircularProgressIndicator();
-        } else if(state is ChangeTimerState){
+        } else
+      if(state is ChangeTimerState){
           return state.counter!=0? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -49,6 +50,9 @@ class _ResendTimerWidgetState extends State<ResendTimerWidget> {
             ],
           ):const SizedBox() ;
         }
+      // else if(state is ResendOtpErrorState){
+      //   return Text("errrorrrr");
+      // }
         return const SizedBox();
       },
     );

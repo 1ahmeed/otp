@@ -54,7 +54,7 @@ final SharedPreferences sharedPreferences;
           );
         },
         builder: (context, state) {
-          return MaterialApp(
+          return MaterialApp.router(
             locale: lang != null ? Locale(lang!) : null,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
@@ -82,7 +82,8 @@ final SharedPreferences sharedPreferences;
             },
             builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
-            onGenerateRoute: AppRoutes.onGenerateRoute,
+            routerConfig: AppRouter.routers,
+
           );
         },
       ),
