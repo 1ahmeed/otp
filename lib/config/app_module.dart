@@ -1,11 +1,13 @@
- import 'package:otp_creative_minds/core/utils/cache_data.dart';
+import 'package:flutter/services.dart';
+import 'package:otp_creative_minds/core/api/dio_factory.dart';
+import 'package:otp_creative_minds/core/utils/cache_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../core/api/dio_factory.dart';
 
-class AppModuleInitializer {
-  AppModuleInitializer._();
+class ServiceInitializer {
+  ServiceInitializer._();
 
-  static final AppModuleInitializer instance = AppModuleInitializer._();
+  static final ServiceInitializer instance = ServiceInitializer._();
 
   initializeSettings() async {
     //This method is used to initialize any service before the app runs (in main method)
@@ -19,13 +21,11 @@ class AppModuleInitializer {
     return result;
   }
 
-  initializeSharedPrefs() async {
-    return await CacheData.init();
+  initializeSharedPrefs() async  {
+     return await SharedPreferences.getInstance();
   }
-
-  initializeDioFactory() async {
-    return DioFactory.getDio();
+  initializeDioFactory() async  {
+     return DioFactory.getDio();
   }
-
 
 }

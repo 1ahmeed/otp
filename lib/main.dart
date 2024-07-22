@@ -13,38 +13,40 @@ import 'config/app_module.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
 import 'generated/l10n.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  List results = await AppModuleInitializer.instance.initializeSettings();
+  await CacheData.init();
+  List results = await ServiceInitializer.instance.initializeSettings();
 
   // await initServiceLocator();
-  // runApp(const MyApp());
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) =>   MyApp(sharedPreferences: results[0]), // Wrap your app
-    ),
-  );
+  // runApp(  MyApp(sharedPreferences: CacheData.sharedPreferences));
+  runApp(DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(sharedPreferences: results[0]), // Wrap your app
+  ));
 }
 
 class MyApp extends StatelessWidget {
-    const MyApp({super.key, required this.sharedPreferences,  });
-final SharedPreferences sharedPreferences;
+  const MyApp({
+    super.key,
+    required this.sharedPreferences,
+  });
+
+  final SharedPreferences sharedPreferences;
   static bool? mode = CacheData.getData(key: AppStrings.modeKey);
 
   static String? lang = CacheData.getData(key: AppStrings.localeKey);
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              AppBloc(langAndModeDataSource: LangAndModeDataSourceImpl(
+          create: (context) => AppBloc(
+              langAndModeDataSource: LangAndModeDataSourceImpl(
                   sharedPreferences: sharedPreferences))
-                ..add(const AppEvent.getSavedLocaleEvent())
-                ..add(const AppEvent.getSavedModeEvent()),
+            ..add(const AppEvent.getSavedLocaleEvent())
+            ..add(const AppEvent.getSavedModeEvent()),
         )
       ],
       child: BlocConsumer<AppBloc, AppState>(
@@ -84,12 +86,9 @@ final SharedPreferences sharedPreferences;
             builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.routers,
-
           );
         },
       ),
     );
   }
 }
-
-
