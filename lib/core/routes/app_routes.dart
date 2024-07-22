@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:otp_creative_minds/features/otp/domain/models/verify_otp_model.dart';
+import 'package:otp_creative_minds/features/otp/domain/use_case/resend_otp_use_case.dart';
+import 'package:otp_creative_minds/features/otp/domain/use_case/verify_otp_use_case.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/otp_screen.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/profile_screen.dart';
 import '../../core/utils/app_string.dart';
@@ -19,7 +21,8 @@ abstract class AppRouter {
         path: initialRoute,
         builder: (context, state) => BlocProvider(
           create: (context) => OtpCubit(
-            otpRepo: OtpRepoImpl(apiService: ApiService(DioFactory.getDio())),
+            resendOtpUseCase:ResendOtpUseCase(otpRepo:OtpRepoImpl(apiService: ApiService(DioFactory.getDio())),) ,
+            verifyOtpUseCase:VerifyOtpUseCase(otpRepo:OtpRepoImpl(apiService: ApiService(DioFactory.getDio())),) ,
           )..resendOtp(context: context),
           child: const OTPScreen(),
         ),

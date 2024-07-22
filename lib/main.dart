@@ -7,9 +7,14 @@ import 'package:otp_creative_minds/core/routes/app_routes.dart';
 import 'package:otp_creative_minds/core/utils/app_string.dart';
 import 'package:otp_creative_minds/core/utils/cache_data.dart';
 import 'package:otp_creative_minds/core/utils/theme.dart';
-import 'package:otp_creative_minds/features/otp/data/data_sources/lang_local_data_source.dart';
+import 'package:otp_creative_minds/features/otp/data/data_sources/lang_mode_data_source.dart';
+import 'package:otp_creative_minds/features/otp/data/repo_impl/lang_repo_impl.dart';
+import 'package:otp_creative_minds/features/otp/domain/use_case/change_lang_use_case.dart';
+import 'package:otp_creative_minds/features/otp/domain/use_case/get_save_lang_use_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'config/app_module.dart';
+import 'features/otp/domain/use_case/change_mode_use_case.dart';
+import 'features/otp/domain/use_case/get_save_mode_use_case.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
 import 'generated/l10n.dart';
 
@@ -43,8 +48,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AppBloc(
-              langAndModeDataSource: LangAndModeDataSourceImpl(
-                  sharedPreferences: sharedPreferences))
+            changeLangUseCase:ChangeLangUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))) ,
+              changeModeUseCase: ChangeModeUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
+              getSavedLangUseCase: GetSavedLangUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
+              getSavedModeUseCase: GetSavedModeUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
+             )
             ..add(const AppEvent.getSavedLocaleEvent())
             ..add(const AppEvent.getSavedModeEvent()),
         )

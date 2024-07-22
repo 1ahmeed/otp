@@ -2,8 +2,6 @@
 
 
 part of 'app_bloc.dart';
-
-
 @freezed
 class AppState<T> with _$AppState<T> {
   const factory AppState.initial() = _Initial;

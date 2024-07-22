@@ -1,36 +1,49 @@
-
 import 'package:json_annotation/json_annotation.dart';
+import 'package:otp_creative_minds/features/otp/data/entity/data_verified_entity.dart';
+
 part 'verify_otp_model.g.dart';
+
 @JsonSerializable()
-class VerifyOtpModel {
+class VerifyOtpModel extends DataVerifiedEntity {
   Data? data;
   dynamic errors;
   String? message;
   bool? success;
 
   VerifyOtpModel({
-      this.data, 
-      this.errors, 
-      this.message, 
-      this.success,});
+    this.data,
+    this.errors,
+    this.message,
+    this.success,}) :super(
+      phone:data!.profile!.phone!,
+      image:data.profile!.image!,
+      name:data.profile!.name!,
+      email:data.profile!.email!,
+      country:data.profile!.countryName!,
+      dateOfBirth:data.profile!.birthdate!,
+      nationality:data.profile!.userNationality!
+  );
 
-  factory VerifyOtpModel.fromJson(Map<String, dynamic> json) => _$VerifyOtpModelFromJson(json);
+  factory VerifyOtpModel.fromJson(Map<String, dynamic> json) =>
+      _$VerifyOtpModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$VerifyOtpModelToJson(this);
 
 
-
-
 }
+
 @JsonSerializable()
 class Data {
   Profile? profile;
   String? token;
+
   Data({
-      this.profile, 
-      this.token,});
+    this.profile,
+    this.token,});
 
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+
   Map<String, dynamic> toJson() => _$DataToJson(this);
 
 }
@@ -38,60 +51,60 @@ class Data {
 @JsonSerializable()
 class Profile {
   Profile({
-      this.id, 
-      this.image, 
-      this.birthdate, 
-      this.hijriBirthdate, 
-      this.phone, 
-      this.countryCode, 
-      this.countryName, 
-      this.email, 
-      this.name, 
-      this.fullName, 
-      this.residencyNumber, 
-      this.residencyStatus, 
-      this.nationalityId, 
-      this.userNationality, 
-      this.hasTax, 
-      this.taxNumber, 
-      this.paymentWays, 
-      this.paymentWayValue, 
-      this.paymentType, 
-      this.bankAccountNumber, 
-      this.entryTime, 
-      this.exitTime, 
-      this.entryTimeFull, 
-      this.exitTimeFull, 
-      this.currency, 
-      this.cancellationReturnPolicyId, 
-      this.completedProfile, 
-      this.hasBookingConditions, 
-      this.bookingConditionsText, 
-      this.totalOrders, 
-      this.rates, 
-      this.blocks, 
-      this.usageAgreementDate, 
-      this.usageAgreementDay, 
-      this.ownerTotalOrders, 
-      this.requestsDebts, 
-      this.ownerTotalFlats, 
-      this.ownerSales, 
-      this.ownerRates, 
-      this.ownerBlocks, 
-      this.isVerified, 
-      this.registeredAt, 
-      this.registeredYear, 
-      this.contactusRoom, 
-      this.ownerWallet, 
-      this.userWallet, 
-      this.isManager, 
-      this.ownerId, 
-      this.newNotifications, 
-      this.ownerNewNotifications, 
-      this.newChats, 
-      this.ownerNewChats, 
-      this.personaVerified, 
-      this.personaVerifyLink,});
+    this.id,
+    this.image,
+    this.birthdate,
+    this.hijriBirthdate,
+    this.phone,
+    this.countryCode,
+    this.countryName,
+    this.email,
+    this.name,
+    this.fullName,
+    this.residencyNumber,
+    this.residencyStatus,
+    this.nationalityId,
+    this.userNationality,
+    this.hasTax,
+    this.taxNumber,
+    this.paymentWays,
+    this.paymentWayValue,
+    this.paymentType,
+    this.bankAccountNumber,
+    this.entryTime,
+    this.exitTime,
+    this.entryTimeFull,
+    this.exitTimeFull,
+    this.currency,
+    this.cancellationReturnPolicyId,
+    this.completedProfile,
+    this.hasBookingConditions,
+    this.bookingConditionsText,
+    this.totalOrders,
+    this.rates,
+    this.blocks,
+    this.usageAgreementDate,
+    this.usageAgreementDay,
+    this.ownerTotalOrders,
+    this.requestsDebts,
+    this.ownerTotalFlats,
+    this.ownerSales,
+    this.ownerRates,
+    this.ownerBlocks,
+    this.isVerified,
+    this.registeredAt,
+    this.registeredYear,
+    this.contactusRoom,
+    this.ownerWallet,
+    this.userWallet,
+    this.isManager,
+    this.ownerId,
+    this.newNotifications,
+    this.ownerNewNotifications,
+    this.newChats,
+    this.ownerNewChats,
+    this.personaVerified,
+    this.personaVerifyLink,});
 
 
   int? id;
@@ -151,6 +164,8 @@ class Profile {
   int? personaVerified;
   String? personaVerifyLink;
 
-  factory Profile.fromJson(Map<String, dynamic> json) => _$ProfileFromJson(json);
+  factory Profile.fromJson(Map<String, dynamic> json) =>
+      _$ProfileFromJson(json);
+
   Map<String, dynamic> toJson() => _$ProfileToJson(this);
 }

@@ -1,38 +1,68 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../data/data_sources/lang_local_data_source.dart';
-
-
+import 'package:otp_creative_minds/core/use_cases/use_case.dart';
+import 'package:otp_creative_minds/features/otp/domain/use_case/get_save_lang_use_case.dart';
+import '../../../../../core/utils/app_string.dart';
+import '../../../../../core/widgets/show_snack_bar.dart';
+import '../../../data/data_sources/lang_mode_data_source.dart';
+import '../../../domain/use_case/change_lang_use_case.dart';
+import '../../../domain/use_case/change_mode_use_case.dart';
+import '../../../domain/use_case/get_save_mode_use_case.dart';
 
 part 'app_bloc.freezed.dart';
-
 
 part 'app_event.dart';
 
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-final LangAndModeDataSource  langAndModeDataSource;
-  AppBloc({required this.langAndModeDataSource})
-      : super(const AppState.initial()) {
-    on<AppEvent>((event, emit)  {
-      event.when(
-        changeLocaleEvent: (langCode)async {
-           langAndModeDataSource.changeLang(langCode: langCode);
-           emit(AppState.changeLocaleSuccess(langCode)) ;
-      },
-          getSavedLocaleEvent: () async{
-            String lang=await langAndModeDataSource.getSavedLang();
-            emit(AppState.changeLocaleSuccess(lang));
-          },
-        changeModeEvent: (isDark)  {
-            langAndModeDataSource.changeMode(isDark: isDark);
-          emit (AppState.changeModeSuccess(isDark)) ;
+  final ChangeLangUseCase changeLangUseCase;
+  final ChangeModeUseCase changeModeUseCase;
+  final GetSavedLangUseCase getSavedLangUseCase;
+  final GetSavedModeUseCase getSavedModeUseCase;
+  AppBloc({
+    required this.changeLangUseCase,
+    required this.changeModeUseCase,
+    required this.getSavedLangUseCase,
+    required this.getSavedModeUseCase,
+  }) : super(const AppState.initial()) {
+    on<AppEvent>((event, emit) async {
+     await event.when(
+        changeLocaleEvent: (langCode) async {
+          var response = await changeLangUseCase.call(langCode);
+          response.fold(
+              (l) => print("cache failed"),
+                  (r)=> emit(AppState.changeLocaleSuccess(langCode))
+          );
         },
-        getSavedModeEvent: ()async {
-          bool mode=await langAndModeDataSource.getSavedMode();
-          emit (AppState.changeModeSuccess(mode)) ;
+        getSavedLocaleEvent: () async {
+          var response=await getSavedLangUseCase.call(NoParam());
+          response.fold(
+                  (l) => print("cache failed"),
+                  (lang) {
+                    print("get data success");
+            emit(AppState.changeLocaleSuccess(lang));
+                  } );
+          // String lang = await langAndModeDataSource.getSavedLang();
+
+        },
+       changeModeEvent: (isDark)async {
+          var response = await changeModeUseCase.call(isDark);
+          response.fold(
+                  (l) => print("cache failed"),
+                  (mode)=> emit(AppState.changeModeSuccess(isDark))
+          );
+
+        },
+        getSavedModeEvent: () async {
+          var response=await getSavedModeUseCase.call(NoParam());
+          response.fold(
+                  (l) => print("cache failed"),
+                  (mode) {
+                print("get mode success");
+                emit(AppState.changeModeSuccess(mode));
+              } );
+
         },
       );
     });
