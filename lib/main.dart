@@ -9,21 +9,22 @@ import 'package:otp_creative_minds/core/utils/cache_data.dart';
 import 'package:otp_creative_minds/core/utils/theme.dart';
 import 'package:otp_creative_minds/features/otp/data/data_sources/lang_local_data_source.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'config/app_module.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
 import 'generated/l10n.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CacheData.init();
-  final sharedPreferences = await SharedPreferences.getInstance();
+
+  List results = await AppModuleInitializer.instance.initializeSettings();
 
   // await initServiceLocator();
   // runApp(const MyApp());
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) =>   MyApp(sharedPreferences: sharedPreferences), // Wrap your app
+      builder: (context) =>   MyApp(sharedPreferences: results[0]), // Wrap your app
     ),
   );
 }

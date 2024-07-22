@@ -73,7 +73,6 @@ class _OTPScreenState extends State<OTPScreen> {
                     ///button resend
                     CustomButtonResend(
                       backgroundColor: Colors.red,
-                      textColor: Colors.black,
                       text: "resend",
                       onPressed: () {
                         OtpCubit.get(context)!

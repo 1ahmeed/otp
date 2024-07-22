@@ -17,7 +17,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: initialRoute,
-        builder: (context, state) =>  BlocProvider(
+        builder: (context, state) => BlocProvider(
           create: (context) => OtpCubit(
             otpRepo: OtpRepoImpl(apiService: ApiService(DioFactory.getDio())),
           )..resendOtp(context: context),

@@ -7,7 +7,7 @@ import '../cubit/otp_cubit/otp_cubit.dart';
 class CustomButtonResend extends StatelessWidget {
   const CustomButtonResend({required this.backgroundColor,
     this.borderRadius,
-    required this.textColor,
+      this.textColor,
     required this.text,
     this.fontSize,
     super.key, this.onPressed});
@@ -29,63 +29,12 @@ class CustomButtonResend extends StatelessWidget {
       builder: (context, state) {
         if (state is ChangeTimerState) {
           return state.counter == 0
-              ?  SizedBox(
-            height: 60,
-            width: double.infinity,
-            child: TextButton(
-              onPressed: onPressed,
-              style: TextButton.styleFrom(
-                  backgroundColor: backgroundColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: borderRadius ?? BorderRadius.circular(12))),
-              child: Text(
-                text,
-                style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: fontSize),
-              ),
-            ),
-          )
+              ?  TextButton(onPressed: onPressed,child: Text(text))
               : const SizedBox();
-        }else if (state is VerifyOtpErrorState) {
-          return SizedBox(
-            height: 60,
-            width: double.infinity,
-            child: TextButton(
-              onPressed: onPressed,
-              style: TextButton.styleFrom(
-                  backgroundColor: backgroundColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: borderRadius ?? BorderRadius.circular(12))),
-              child: Text(
-                text,
-                style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: fontSize),
-              ),
-            ),
-          );
-        }else if (state is ResendOtpErrorState) {
-          return SizedBox(
-            height: 60,
-            width: double.infinity,
-            child: TextButton(
-              onPressed: onPressed,
-              style: TextButton.styleFrom(
-                  backgroundColor: backgroundColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: borderRadius ?? BorderRadius.circular(12))),
-              child: Text(
-                text,
-                style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: fontSize),
-              ),
-            ),
-          );
+        }else if (state is VerifyOtpErrorState ||state is ResendOtpErrorState) {
+          return TextButton(onPressed: onPressed,child: Text(text,style: const TextStyle(
+            fontSize: 15
+          ),),);
         }
         return const SizedBox();
       },
