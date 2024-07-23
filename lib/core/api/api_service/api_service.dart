@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:otp_creative_minds/core/api/end_points.dart';
- import 'package:otp_creative_minds/features/otp/domain/models/resend_otp_model.dart';
-import 'package:retrofit/http.dart';
+ import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../features/otp/domain/models/verify_otp_model.dart';
+import '../../../features/otp/data/models/resend_otp_model.dart';
+import '../../../features/otp/data/models/verify_otp_model.dart';
 
 part 'api_service.g.dart';
 

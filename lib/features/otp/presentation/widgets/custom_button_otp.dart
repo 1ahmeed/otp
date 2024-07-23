@@ -29,7 +29,7 @@ class CustomButtonCheckOtp extends StatelessWidget {
       listener: (context, state) {
         if (state is VerifyOtpSuccessState) {
           GoRouter.of(context)
-              .push(AppRouter.profileScreen, extra: state.verifyOtpModel);
+              .push(AppRouter.profileScreen, extra: state.verifyOtpEntity);
         }
       },
       builder: (context, state) {

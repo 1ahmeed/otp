@@ -2,21 +2,23 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:otp_creative_minds/core/api/api_service/api_service.dart';
 import 'package:otp_creative_minds/core/api/failuer.dart';
-import 'package:otp_creative_minds/features/otp/domain/models/resend_otp_model.dart';
+import 'package:otp_creative_minds/features/otp/data/models/resend_otp_model.dart';
 
-import '../../domain/models/verify_otp_model.dart';
+import '../../data/models/verify_otp_model.dart';
 import '../../domain/repo/otp_repo.dart';
+import '../data_sources/otp_remote_data_source.dart';
 
 class OtpRepoImpl extends OtpRepo {
-  final ApiService apiService;
 
-  OtpRepoImpl({required this.apiService});
+   final OtpRemoteDataSource otpRemoteDataSource;
+
+  OtpRepoImpl({required this.otpRemoteDataSource,});
 
   @override
   Future<Either<Failures, ResendOtpModel>> resendOtp(
       {String? countryCode, String? phone}) async {
     try {
-      var response = await apiService.resendOtp(
+      var response = await otpRemoteDataSource.resendOtp(
           countryCode: countryCode!,
           phone: phone!);
       return right(response);
@@ -34,7 +36,7 @@ class OtpRepoImpl extends OtpRepo {
   Future<Either<Failures,VerifyOtpModel>> verifyOtp(
       {String? countryCode, String? phone, String? otp}) async {
     try {
-      var response = await apiService.verifyOtp(
+      var response = await otpRemoteDataSource.verifyOtp(
           countryCode: countryCode!,
           phone: phone!,
           otp: otp!);

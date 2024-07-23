@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:otp_creative_minds/features/otp/domain/models/resend_otp_model.dart';
-import 'package:otp_creative_minds/features/otp/domain/models/verify_otp_model.dart';
+ import 'package:otp_creative_minds/features/otp/data/models/verify_otp_model.dart';
+import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/resend_otp_use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/verify_otp_use_case.dart';
 
 import '../../../../../core/widgets/show_snack_bar.dart';
-import '../../../domain/repo/otp_repo.dart';
+import '../../../data/models/resend_otp_model.dart';
 
 part 'otp_state.dart';
 
@@ -70,17 +70,14 @@ class OtpCubit extends Cubit<OtpsState> {
 
     var response = await verifyOtpUseCase.call(
         VerifyOtpRequest(countryCode: countryCode!, phone: phone!, otp: otpController.text));
-
-    // otpRepo.verifyOtp(
-    //     countryCode: countryCode!, phone: phone!, otp: otpController.text);
     response.fold((error) {
       SnackBarMessage.showErrorSnackBar(
           message: error.errorMessage, context: context);
       emit(VerifyOtpErrorState(error: error.errorMessage));
     }, (response) {
       SnackBarMessage.showSuccessSnackBar(
-          message: response.data!.profile!.birthdate!, context: context);
-      emit(VerifyOtpSuccessState(verifyOtpModel: response));
+          message: response.dateOfBirth, context: context);
+      emit(VerifyOtpSuccessState(verifyOtpEntity: response));
     });
   }
 }

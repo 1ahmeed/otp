@@ -36,11 +36,11 @@ class ResendOtpErrorState extends OtpsState {
 
 class VerifyOtpLoadingState extends OtpsState {}
 class VerifyOtpSuccessState extends OtpsState {
-  final VerifyOtpModel? verifyOtpModel;
-  VerifyOtpSuccessState({required this.verifyOtpModel});
+  final VerifyOtpEntity? verifyOtpEntity;
+  VerifyOtpSuccessState({required this.verifyOtpEntity});
   @override
   // TODO: implement props
-  List<Object?> get props => [verifyOtpModel];
+  List<Object?> get props => [verifyOtpEntity];
 }
 class VerifyOtpErrorState extends OtpsState {
   final String error;

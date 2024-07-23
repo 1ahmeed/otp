@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconly/iconly.dart';
-import 'package:otp_creative_minds/features/otp/domain/models/verify_otp_model.dart';
-import 'package:otp_creative_minds/features/otp/presentation/widgets/app_bar.dart';
+import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
+ import 'package:otp_creative_minds/features/otp/presentation/widgets/app_bar.dart';
 
+import '../../data/models/verify_otp_model.dart';
 import '../widgets/build_item_of_info_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key, this.verifyOtpModel});
-final VerifyOtpModel? verifyOtpModel;
+    ProfileScreen({super.key, this.verifyOtpEntity});
+final VerifyOtpEntity? verifyOtpEntity;
   @override
   Widget build(BuildContext context) {
-    var model= verifyOtpModel!.data!.profile!;
     return Scaffold(
       appBar: buildAppBar(context),
       body:  Padding(
@@ -30,37 +30,37 @@ final VerifyOtpModel? verifyOtpModel;
             //   //   model.image!, scale: .1),
             //   child:
             // ),
-            Image.network(  model.image!,width: 100,height: 100,),
+            Image.network(  verifyOtpEntity!.image,width: 100,height: 100,),
             const SizedBox(
               height: 50,
             ),
             ///name
-            BuildItemOfInfoProfile(title: model.name!, icon: Icons.person),
+            BuildItemOfInfoProfile(title: verifyOtpEntity!.name, icon: Icons.person),
             const SizedBox(
               height: 20,
             ),
             ///email
-            BuildItemOfInfoProfile(title: model.email!, icon:  Icons.email,),
+            BuildItemOfInfoProfile(title: verifyOtpEntity!.email, icon:  Icons.email,),
             const SizedBox(
               height: 20,
             ),
             ///user nationality
-            BuildItemOfInfoProfile(title: model.userNationality??"", icon:   IconlyLight.paper_negative),
+            BuildItemOfInfoProfile(title: verifyOtpEntity?.nationality??"", icon:   IconlyLight.paper_negative),
             const SizedBox(
               height: 20,
             ),
             ///birth day
-            BuildItemOfInfoProfile(title: model.birthdate!, icon:FontAwesomeIcons.cakeCandles,),
+            BuildItemOfInfoProfile(title: verifyOtpEntity!.dateOfBirth, icon:FontAwesomeIcons.cakeCandles,),
             const SizedBox(
               height: 20,
             ),
             ///phone
-            BuildItemOfInfoProfile(title: model.phone!, icon:Icons.phone),
+            BuildItemOfInfoProfile(title: verifyOtpEntity!.phone, icon:Icons.phone),
             const SizedBox(
               height: 20,
             ),
             ///country name
-            BuildItemOfInfoProfile(title: model.countryName??"", icon:FontAwesomeIcons.globe,),
+            BuildItemOfInfoProfile(title: verifyOtpEntity?.country??"", icon:FontAwesomeIcons.globe,),
           ],
         ),
       ),

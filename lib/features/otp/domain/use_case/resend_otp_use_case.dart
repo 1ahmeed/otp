@@ -3,7 +3,7 @@ import 'package:otp_creative_minds/features/otp/domain/repo/otp_repo.dart';
 
 import '../../../../core/api/failuer.dart';
 import '../../../../core/use_cases/use_case.dart';
-import '../models/resend_otp_model.dart';
+import '../../data/models/resend_otp_model.dart';
 
 class ResendOtpUseCase implements UseCase<ResendOtpModel,ResendOtpRequest> {
   final OtpRepo otpRepo;

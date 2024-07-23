@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
-import 'package:otp_creative_minds/features/otp/domain/models/verify_otp_model.dart';
+import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
 
 import '../../../../core/api/failuer.dart';
 import '../../../../core/use_cases/use_case.dart';
-import '../models/resend_otp_model.dart';
-import '../repo/otp_repo.dart';
+import '../../data/models/verify_otp_model.dart';
+ import '../repo/otp_repo.dart';
 
-class VerifyOtpUseCase implements UseCase<VerifyOtpModel,VerifyOtpRequest> {
+class VerifyOtpUseCase implements UseCase<VerifyOtpEntity,VerifyOtpRequest> {
   final OtpRepo otpRepo;
 
   VerifyOtpUseCase({required this.otpRepo});
   @override
-  Future<Either<Failures, VerifyOtpModel>> call(VerifyOtpRequest param)async {
+  Future<Either<Failures, VerifyOtpEntity>> call(VerifyOtpRequest param)async {
     return await otpRepo.verifyOtp(
         otp: param.otp,
         phone:param.phone,countryCode:param.countryCode );

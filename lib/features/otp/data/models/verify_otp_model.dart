@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:otp_creative_minds/features/otp/data/entity/data_verified_entity.dart';
+import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
 
 part 'verify_otp_model.g.dart';
 
 @JsonSerializable()
-class VerifyOtpModel extends DataVerifiedEntity {
+class VerifyOtpModel extends VerifyOtpEntity {
   Data? data;
   dynamic errors;
   String? message;
