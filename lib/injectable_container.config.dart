@@ -13,7 +13,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:otp_creative_minds/core/api/api_service/api_service.dart'
     as _i13;
-import 'package:otp_creative_minds/core/api/app_module_inject.dart' as _i21;
+import 'package:otp_creative_minds/config/app_module_inject.dart' as _i21;
 import 'package:otp_creative_minds/features/otp/data/data_sources/lang_mode_data_source.dart'
     as _i6;
 import 'package:otp_creative_minds/features/otp/data/data_sources/otp_remote_data_source.dart'

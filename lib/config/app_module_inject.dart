@@ -4,7 +4,7 @@ import 'package:otp_creative_minds/core/api/dio_factory.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/cache_data.dart';
+import '../core/utils/cache_data.dart';
 
 @module
 abstract class AppModuleInject {
