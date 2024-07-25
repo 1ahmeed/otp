@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/utils/app_string.dart';
@@ -13,6 +14,7 @@ abstract class LangAndModeDataSource {
   Future<bool> getSavedMode();
 }
 
+@LazySingleton(as: LangAndModeDataSource)
 class LangAndModeDataSourceImpl extends LangAndModeDataSource {
   final SharedPreferences sharedPreferences;
 

@@ -1,15 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/core/api/api_service/api_service.dart';
 import 'package:otp_creative_minds/core/api/failuer.dart';
 import 'package:otp_creative_minds/features/otp/data/models/resend_otp_model.dart';
 
-import '../../data/models/verify_otp_model.dart';
+ import '../../data/models/verify_otp_model.dart';
 import '../../domain/repo/otp_repo.dart';
 import '../data_sources/otp_remote_data_source.dart';
 
-class OtpRepoImpl extends OtpRepo {
+// @Injectable(as: OtpRepo)
 
+@LazySingleton(as: OtpRepo)
+class OtpRepoImpl extends OtpRepo {
    final OtpRemoteDataSource otpRemoteDataSource;
 
   OtpRepoImpl({required this.otpRemoteDataSource,});

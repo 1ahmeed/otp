@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/core/use_cases/use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/get_save_lang_use_case.dart';
 import '../../../../../core/utils/app_string.dart';
@@ -15,6 +16,7 @@ part 'app_event.dart';
 
 part 'app_state.dart';
 
+@injectable
 class AppBloc extends Bloc<AppEvent, AppState> {
   final ChangeLangUseCase changeLangUseCase;
   final ChangeModeUseCase changeModeUseCase;

@@ -11,6 +11,7 @@ import 'package:otp_creative_minds/features/otp/presentation/screens/profile_scr
 import '../../core/utils/app_string.dart';
 import '../../features/otp/data/repo_impl/otp_repo_impl.dart';
 import '../../features/otp/presentation/cubit/otp_cubit/otp_cubit.dart';
+ import '../../injectable_container.dart';
 import '../api/api_service/api_service.dart';
 import '../api/dio_factory.dart';
 
@@ -22,26 +23,28 @@ abstract class AppRouter {
       GoRoute(
         path: initialRoute,
         builder: (context, state) => BlocProvider(
-          create: (context) => OtpCubit(
-            resendOtpUseCase: ResendOtpUseCase(
-              otpRepo: OtpRepoImpl(
-                otpRemoteDataSource: OtpRemoteDataSourceImpl(
-                  apiService: ApiService(
-                    DioFactory.getDio(),
-                  ),
-                ),
-              ),
-            ),
-            verifyOtpUseCase: VerifyOtpUseCase(
-              otpRepo: OtpRepoImpl(
-                otpRemoteDataSource: OtpRemoteDataSourceImpl(
-                  apiService: ApiService(
-                    DioFactory.getDio(),
-                  ),
-                ),
-              ),
-            ),
-          )..resendOtp(context: context),
+          create: (context) =>
+          getIt<OtpCubit>()..resendOtp(context: context),
+          // OtpCubit(
+          //   resendOtpUseCase: ResendOtpUseCase(
+          //     otpRepo: OtpRepoImpl(
+          //       otpRemoteDataSource: OtpRemoteDataSourceImpl(
+          //         apiService: ApiService(
+          //          DioFactory.getDio(),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          //   verifyOtpUseCase: VerifyOtpUseCase(
+          //     otpRepo: OtpRepoImpl(
+          //       otpRemoteDataSource: OtpRemoteDataSourceImpl(
+          //         apiService: ApiService(
+          //           DioFactory.getDio(),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // )..resendOtp(context: context),
           child: const OTPScreen(),
         ),
       ),

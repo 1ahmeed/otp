@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:otp_creative_minds/core/api/end_points.dart';
+import 'package:injectable/injectable.dart';
+import 'package:otp_creative_minds/core/api/dio_factory.dart';
+ import 'package:otp_creative_minds/core/api/end_points.dart';
  import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -8,9 +10,14 @@ import '../../../features/otp/data/models/verify_otp_model.dart';
 
 part 'api_service.g.dart';
 
+@LazySingleton()
 @RestApi(baseUrl: EndPoints.baseUrl)
 abstract class ApiService {
-  factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
+
+  @FactoryMethod()
+  factory ApiService( Dio dio, {String baseUrl}) = _ApiService;
+
+
 
    @POST(EndPoints.resendOtp)
   Future<ResendOtpModel> resendOtp({

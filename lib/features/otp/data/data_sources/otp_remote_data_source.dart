@@ -1,9 +1,11 @@
 
 
 
+import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/core/api/api_service/api_service.dart';
 import 'package:otp_creative_minds/features/otp/data/models/resend_otp_model.dart';
 import 'package:otp_creative_minds/features/otp/data/models/verify_otp_model.dart';
+
 
 abstract class OtpRemoteDataSource {
   Future<ResendOtpModel> resendOtp({
@@ -17,7 +19,8 @@ abstract class OtpRemoteDataSource {
   });
 }
 
-class OtpRemoteDataSourceImpl extends OtpRemoteDataSource {
+@LazySingleton(as: OtpRemoteDataSource)
+ class OtpRemoteDataSourceImpl extends OtpRemoteDataSource {
  ApiService apiService;
 
  OtpRemoteDataSourceImpl({required this.apiService});

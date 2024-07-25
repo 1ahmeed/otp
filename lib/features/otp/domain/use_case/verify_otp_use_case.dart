@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
 
 import '../../../../core/api/failuer.dart';
 import '../../../../core/use_cases/use_case.dart';
-import '../../data/models/verify_otp_model.dart';
+ import '../../data/models/verify_otp_model.dart';
  import '../repo/otp_repo.dart';
 
+
+@LazySingleton()
 class VerifyOtpUseCase implements UseCase<VerifyOtpEntity,VerifyOtpRequest> {
   final OtpRepo otpRepo;
 

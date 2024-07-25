@@ -2,21 +2,22 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
- import 'package:otp_creative_minds/features/otp/data/models/verify_otp_model.dart';
-import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
+import 'package:injectable/injectable.dart';
+ import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/resend_otp_use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/verify_otp_use_case.dart';
 
 import '../../../../../core/widgets/show_snack_bar.dart';
-import '../../../data/models/resend_otp_model.dart';
+ import '../../../data/models/resend_otp_model.dart';
 
 part 'otp_state.dart';
-
+@injectable
 class OtpCubit extends Cubit<OtpsState> {
   OtpCubit({required this.verifyOtpUseCase, required this.resendOtpUseCase, })
       : super(OtpInitial());
 
   static OtpCubit? get(context) => BlocProvider.of(context);
+
 
   // final OtpRepo otpRepo;
   final VerifyOtpUseCase verifyOtpUseCase;
