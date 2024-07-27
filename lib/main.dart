@@ -16,7 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.init();
    configureInjection(Environment.dev);
-  // runApp(  MyApp(sharedPreferences: CacheData.sharedPreferences));
+  // runApp(  MyApp());
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
@@ -39,14 +39,6 @@ class MyApp extends StatelessWidget {
           create: (context) =>
           getIt<AppBloc>()..add(const AppEvent.getSavedLocaleEvent())
             ..add(const AppEvent.getSavedModeEvent()),
-          // AppBloc(
-          //   changeLangUseCase:ChangeLangUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))) ,
-          //     changeModeUseCase: ChangeModeUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
-          //     getSavedLangUseCase: GetSavedLangUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
-          //     getSavedModeUseCase: GetSavedModeUseCase(langModeRepo: LangRepoImpl(langAndModeDataSource:LangAndModeDataSourceImpl(sharedPreferences: sharedPreferences))),
-          //    )
-          //   ..add(const AppEvent.getSavedLocaleEvent())
-          //   ..add(const AppEvent.getSavedModeEvent()),
         )
       ],
       child: BlocConsumer<AppBloc, AppState>(

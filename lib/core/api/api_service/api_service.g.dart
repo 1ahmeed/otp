@@ -28,15 +28,10 @@ class _ApiService implements ApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    _data.fields.add(MapEntry(
-      'country_code',
-      countryCode,
-    ));
-    _data.fields.add(MapEntry(
-      'phone',
-      phone,
-    ));
+    final _data = {
+      'country_code': countryCode,
+      'phone': phone,
+    };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResendOtpModel>(Options(
       method: 'POST',

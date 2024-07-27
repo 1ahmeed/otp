@@ -8,11 +8,13 @@ import '../core/utils/cache_data.dart';
 
 @module
 abstract class AppModuleInject {
-  @lazySingleton
-  Dio get getDio =>DioFactory.getDio();
 
-  @lazySingleton
-  SharedPreferences get sharedPreferences   =>  CacheData.sharedPreferences;
+  // @lazySingleton
+  // SharedPreferences get sharedPreferences   =>  CacheData.sharedPreferences;
+
+  @LazySingleton()
+  @preResolve
+  Future<SharedPreferences> get sharedPreferences =>  SharedPreferences.getInstance();
 
   @lazySingleton
   PrettyDioLogger get prettyDioLogger   => PrettyDioLogger(

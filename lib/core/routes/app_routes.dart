@@ -25,26 +25,6 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) =>
           getIt<OtpCubit>()..resendOtp(context: context),
-          // OtpCubit(
-          //   resendOtpUseCase: ResendOtpUseCase(
-          //     otpRepo: OtpRepoImpl(
-          //       otpRemoteDataSource: OtpRemoteDataSourceImpl(
-          //         apiService: ApiService(
-          //          DioFactory.getDio(),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          //   verifyOtpUseCase: VerifyOtpUseCase(
-          //     otpRepo: OtpRepoImpl(
-          //       otpRemoteDataSource: OtpRemoteDataSourceImpl(
-          //         apiService: ApiService(
-          //           DioFactory.getDio(),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // )..resendOtp(context: context),
           child: const OTPScreen(),
         ),
       ),

@@ -9,7 +9,6 @@ import 'package:otp_creative_minds/features/otp/data/models/resend_otp_model.dar
 import '../../domain/repo/otp_repo.dart';
 import '../data_sources/otp_remote_data_source.dart';
 
-// @Injectable(as: OtpRepo)
 
 @LazySingleton(as: OtpRepo)
 class OtpRepoImpl extends OtpRepo {
