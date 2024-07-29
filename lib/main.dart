@@ -8,6 +8,7 @@ import 'package:otp_creative_minds/core/routes/app_routes.dart';
 import 'package:otp_creative_minds/core/utils/app_string.dart';
 import 'package:otp_creative_minds/core/utils/cache_data.dart';
 import 'package:otp_creative_minds/core/utils/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
 import 'generated/l10n.dart';
 import 'injectable_container.dart';
@@ -24,13 +25,11 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
+    MyApp({
     super.key,
   });
   static bool? mode = CacheData.getData(key: AppStrings.modeKey);
-
   static String? lang = CacheData.getData(key: AppStrings.localeKey);
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

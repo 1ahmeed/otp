@@ -10,7 +10,7 @@ import '../../domain/repo/otp_repo.dart';
 import '../data_sources/otp_remote_data_source.dart';
 
 
-@LazySingleton(as: OtpRepo)
+@Injectable(as: OtpRepo)
 class OtpRepoImpl extends OtpRepo {
    final OtpRemoteDataSource otpRemoteDataSource;
 

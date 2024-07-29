@@ -19,7 +19,7 @@ abstract class OtpRemoteDataSource {
   });
 }
 
-@LazySingleton(as: OtpRemoteDataSource)
+@Injectable(as: OtpRemoteDataSource)
  class OtpRemoteDataSourceImpl extends OtpRemoteDataSource {
  ApiService apiService;
 

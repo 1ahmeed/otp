@@ -7,7 +7,7 @@ import '../../../../core/use_cases/use_case.dart';
 import '../../data/models/resend_otp_model.dart';
 import '../repo/otp_repo.dart';
 
-@LazySingleton()
+ @Injectable()
 class ResendOtpUseCase implements UseCase<ResendOtpModel,ResendOtpRequest> {
   final OtpRepo otpRepo;
 

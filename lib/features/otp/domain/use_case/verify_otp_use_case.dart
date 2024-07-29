@@ -8,7 +8,7 @@ import '../../../../core/use_cases/use_case.dart';
  import '../repo/otp_repo.dart';
 
 
-@LazySingleton()
+@Injectable()
 class VerifyOtpUseCase implements UseCase<VerifyOtpEntity,VerifyOtpRequest> {
   final OtpRepo otpRepo;
 

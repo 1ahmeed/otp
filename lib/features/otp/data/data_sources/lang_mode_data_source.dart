@@ -14,7 +14,7 @@ abstract class LangAndModeDataSource {
   Future<bool> getSavedMode();
 }
 
-@LazySingleton(as: LangAndModeDataSource)
+@Injectable(as: LangAndModeDataSource)
 class LangAndModeDataSourceImpl extends LangAndModeDataSource {
   final SharedPreferences sharedPreferences;
 

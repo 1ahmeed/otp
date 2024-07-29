@@ -12,8 +12,8 @@ import '../../../injectable_container.dart';
 
 part 'api_service.g.dart';
 
-@LazySingleton()
-@RestApi(baseUrl: EndPoints.baseUrl)
+@lazySingleton
+@RestApi()
 abstract class ApiService {
   factory ApiService(Dio dio,{ String baseUrl}) = _ApiService;
 

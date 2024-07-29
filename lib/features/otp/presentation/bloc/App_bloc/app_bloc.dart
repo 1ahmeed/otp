@@ -16,7 +16,7 @@ part 'app_event.dart';
 
 part 'app_state.dart';
 
-@injectable
+@Injectable()
 class AppBloc extends Bloc<AppEvent, AppState> {
   final ChangeLangUseCase changeLangUseCase;
   final ChangeModeUseCase changeModeUseCase;
@@ -27,7 +27,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     required this.changeModeUseCase,
     required this.getSavedLangUseCase,
     required this.getSavedModeUseCase,
-  }) : super(const AppState.initial()) {
+  }) : super(const AppState.initial()){
     on<AppEvent>((event, emit) async {
      await event.when(
         changeLocaleEvent: (langCode) async {

@@ -5,7 +5,7 @@ import 'package:otp_creative_minds/features/otp/domain/repo/lang_mode_repo.dart'
 import '../../../../core/api/failuer.dart';
 import '../../../../core/use_cases/use_case.dart';
 
-@LazySingleton( )
+@Injectable()
 class ChangeLangUseCase implements UseCase<bool,String> {
   final LangModeRepo langModeRepo;
 

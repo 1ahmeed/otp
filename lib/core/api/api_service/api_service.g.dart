@@ -12,9 +12,7 @@ class _ApiService implements ApiService {
   _ApiService(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'https://dev.goldenhost.co/api/v3/';
-  }
+  });
 
   final Dio _dio;
 

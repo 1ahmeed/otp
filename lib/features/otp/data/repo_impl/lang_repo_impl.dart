@@ -4,7 +4,7 @@ import '../../../../core/api/failuer.dart';
 
 import '../../domain/repo/lang_mode_repo.dart';
 import '../data_sources/lang_mode_data_source.dart';
- @LazySingleton(as: LangModeRepo)
+ @Injectable(as: LangModeRepo)
 class LangRepoImpl extends LangModeRepo {
   final LangAndModeDataSource langAndModeDataSource;
 

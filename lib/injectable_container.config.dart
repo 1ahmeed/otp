@@ -63,22 +63,21 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i5.PrettyDioLogger>(
         () => appModuleInject.prettyDioLogger);
-    gh.lazySingleton<_i6.LangAndModeDataSource>(() =>
-        _i6.LangAndModeDataSourceImpl(
-            sharedPreferences: gh<_i4.SharedPreferences>()));
-    gh.lazySingleton<_i7.LangModeRepo>(() => _i8.LangRepoImpl(
+    gh.factory<_i6.LangAndModeDataSource>(() => _i6.LangAndModeDataSourceImpl(
+        sharedPreferences: gh<_i4.SharedPreferences>()));
+    gh.factory<_i7.LangModeRepo>(() => _i8.LangRepoImpl(
         langAndModeDataSource: gh<_i6.LangAndModeDataSource>()));
-    gh.lazySingleton<_i9.ChangeLangUseCase>(
+    gh.factory<_i9.ChangeLangUseCase>(
         () => _i9.ChangeLangUseCase(langModeRepo: gh<_i7.LangModeRepo>()));
-    gh.lazySingleton<_i10.ChangeModeUseCase>(
+    gh.factory<_i10.ChangeModeUseCase>(
         () => _i10.ChangeModeUseCase(langModeRepo: gh<_i7.LangModeRepo>()));
-    gh.lazySingleton<_i11.GetSavedLangUseCase>(
+    gh.factory<_i11.GetSavedLangUseCase>(
         () => _i11.GetSavedLangUseCase(langModeRepo: gh<_i7.LangModeRepo>()));
-    gh.lazySingleton<_i12.GetSavedModeUseCase>(
+    gh.factory<_i12.GetSavedModeUseCase>(
         () => _i12.GetSavedModeUseCase(langModeRepo: gh<_i7.LangModeRepo>()));
-    gh.lazySingleton<_i13.OtpRemoteDataSource>(
+    gh.factory<_i13.OtpRemoteDataSource>(
         () => _i13.OtpRemoteDataSourceImpl(apiService: gh<_i3.ApiService>()));
-    gh.lazySingleton<_i14.OtpRepo>(() =>
+    gh.factory<_i14.OtpRepo>(() =>
         _i15.OtpRepoImpl(otpRemoteDataSource: gh<_i13.OtpRemoteDataSource>()));
     gh.factory<_i16.AppBloc>(() => _i16.AppBloc(
           changeLangUseCase: gh<_i9.ChangeLangUseCase>(),
@@ -86,9 +85,9 @@ extension GetItInjectableX on _i1.GetIt {
           getSavedLangUseCase: gh<_i11.GetSavedLangUseCase>(),
           getSavedModeUseCase: gh<_i12.GetSavedModeUseCase>(),
         ));
-    gh.lazySingleton<_i17.ResendOtpUseCase>(
+    gh.factory<_i17.ResendOtpUseCase>(
         () => _i17.ResendOtpUseCase(otpRepo: gh<_i14.OtpRepo>()));
-    gh.lazySingleton<_i18.VerifyOtpUseCase>(
+    gh.factory<_i18.VerifyOtpUseCase>(
         () => _i18.VerifyOtpUseCase(otpRepo: gh<_i14.OtpRepo>()));
     gh.factory<_i19.OtpCubit>(() => _i19.OtpCubit(
           verifyOtpUseCase: gh<_i18.VerifyOtpUseCase>(),
