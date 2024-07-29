@@ -12,7 +12,7 @@ import '../../../injectable_container.dart';
 
 part 'api_service.g.dart';
 
-@lazySingleton
+@singleton
 @RestApi()
 abstract class ApiService {
   factory ApiService(Dio dio,{ String baseUrl}) = _ApiService;
@@ -29,7 +29,14 @@ abstract class ApiService {
          ..options.headers[EndPoints.headerAcceptKey]=EndPoints.headerAcceptValue
        ;
        dio.interceptors.add(
-           getIt<PrettyDioLogger>()
+           PrettyDioLogger(
+               request: true,
+               requestBody: true,
+               requestHeader: true,
+               responseBody: true,
+               responseHeader: true,
+               error: true)
+           // getIt<PrettyDioLogger>()
        );
        return ApiService(dio);
    }

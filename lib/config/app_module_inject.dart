@@ -16,12 +16,12 @@ abstract class AppModuleInject {
   @preResolve
   Future<SharedPreferences> get sharedPreferences =>  SharedPreferences.getInstance();
 
-  @lazySingleton
-  PrettyDioLogger get prettyDioLogger   => PrettyDioLogger(
-      request: true,
-      requestBody: true,
-      requestHeader: true,
-      responseBody: true,
-      responseHeader: true,
-      error: true);
+
+  // PrettyDioLogger get prettyDioLogger   => PrettyDioLogger(
+  //     request: true,
+  //     requestBody: true,
+  //     requestHeader: true,
+  //     responseBody: true,
+  //     responseHeader: true,
+  //     error: true);
 }
