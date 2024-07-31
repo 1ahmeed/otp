@@ -21,7 +21,7 @@ class PushNotificationsService {
       FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     //foreground
     handleForegroundMessage();
-    ///on message open app
+    //on message open app
     handleOnMessageOpenedApp();
   }
 

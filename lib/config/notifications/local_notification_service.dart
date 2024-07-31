@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -56,7 +57,8 @@ class LocalNotificationService {
       android: android,
     );
     await flutterLocalNotificationsPlugin.show(
-      0,
+      Random().nextInt(1000000000),
+      // 0,
       message.notification?.title,
       message.notification?.body,
       details,

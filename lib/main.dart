@@ -18,21 +18,6 @@ import 'generated/l10n.dart';
 import 'injectable_container.dart';
 
 
-///لما التطبيق يكون ف الباكجراوند
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//   // If you're going to use other Firebase services in the background, such as Firestore,
-//   // make sure you call `initializeApp` before using other Firebase services.
-//   // await Firebase.initializeApp(
-//   //   options: DefaultFirebaseOptions.currentPlatform,
-//   // );
-// print("--------------------------background or terminated");
-// print('Message data: ${message.data}');
-//   print(message.notification!.title);
-//   print(message.notification!.body);
-// print("-------------------------------------");
-//   // print("Handling a background message: ${message.messageId}");
-// }
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,32 +28,6 @@ void main() async {
   await configureInjection(Environment.dev);
   PushNotificationsService.init();
   LocalNotificationService.init();
-
-
-  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // String? token=await FirebaseMessaging.instance.getToken();
-  // print(token);
-  ///on message
-  // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-  //   // print('Got a message whilst in the foreground!');
-  //   if (message.notification != null) {
-  //     print('===================================on message');
-  //      print('Message data: ${message.data}');
-  //     print(message.notification!.title);
-  //     print(message.notification!.body);
-  //     // print('Message also contained a notification: ${message.notification}');
-  //     print('=================================================');
-  //   }
-  // });
-  ///on message open app
-  // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-  //   print("*************************on message open app");
-  //   print(message.data.toString());
-  //   print(message.notification!.title);
-  //   print(message.notification!.body);
-  //   print("************************************");
-  // });
-  // runApp(  MyApp());
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
