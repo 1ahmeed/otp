@@ -12,7 +12,7 @@ import '../../../../../core/widgets/show_snack_bar.dart';
 
 part 'otp_state.dart';
 @injectable
-class OtpCubit extends Cubit<OtpsState> {
+class OtpCubit extends Cubit<OtpState> {
   OtpCubit({required this.verifyOtpUseCase, required this.resendOtpUseCase, })
       : super(OtpInitial());
 
@@ -48,11 +48,10 @@ class OtpCubit extends Cubit<OtpsState> {
     });
   }
 
-  void resendOtp({String? countryCode, String? phone, required context}) async {
+  void resendOtp({String? countryCode, String? phone,   context}) async {
     emit(ResendOtpLoadingState());
     var response = await resendOtpUseCase
         .call(ResendOtpRequest(countryCode: "+966", phone: "511111111"));
-    // await otpRepo.resendOtp(countryCode: "+966", phone: "511111111");
     response.fold((error) {
       SnackBarMessage.showErrorSnackBar(
           message: error.errorMessage, context: context);

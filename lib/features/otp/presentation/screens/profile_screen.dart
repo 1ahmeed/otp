@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconly/iconly.dart';
 import 'package:otp_creative_minds/features/otp/domain/entity/verify_otp_entity.dart';
@@ -8,7 +8,7 @@ import '../../data/models/verify_otp_model.dart';
 import '../widgets/build_item_of_info_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
-    ProfileScreen({super.key, this.verifyOtpEntity});
+    const ProfileScreen({super.key, this.verifyOtpEntity});
 final VerifyOtpEntity? verifyOtpEntity;
   @override
   Widget build(BuildContext context) {

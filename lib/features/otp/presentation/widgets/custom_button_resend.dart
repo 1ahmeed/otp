@@ -21,7 +21,7 @@ class CustomButtonResend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OtpCubit, OtpsState>(
+    return BlocBuilder<OtpCubit, OtpState>(
       // buildWhen: (previous, current) {
       //   return current is VerifyOtpErrorState || current is ResendOtpErrorState
       //       || current is ChangeTimerState;

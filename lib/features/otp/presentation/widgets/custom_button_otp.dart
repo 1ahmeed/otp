@@ -25,7 +25,7 @@ class CustomButtonCheckOtp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<OtpCubit, OtpsState>(
+    return BlocConsumer<OtpCubit, OtpState>(
       listener: (context, state) {
         if (state is VerifyOtpSuccessState) {
           GoRouter.of(context)

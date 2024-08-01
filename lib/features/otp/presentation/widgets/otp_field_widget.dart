@@ -34,7 +34,7 @@ class _OtpScreenState extends State<OtpFieldWidget> {
   @override
   Widget build(BuildContext context) {
     var cubit=context.read<OtpCubit>();
-    return  BlocBuilder<OtpCubit, OtpsState>(
+    return  BlocBuilder<OtpCubit, OtpState>(
   builder: (context, state) {
     return Pinput(
         controller: cubit.otpController,

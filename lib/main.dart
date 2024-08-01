@@ -26,8 +26,8 @@ void main() async {
   );
   await CacheData.init();
   await configureInjection(Environment.dev);
-  PushNotificationsService.init();
-  LocalNotificationService.init();
+  await PushNotificationsService.init();
+   await LocalNotificationService.init();
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
@@ -87,6 +87,7 @@ class MyApp extends StatelessWidget {
             builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.routers,
+
           );
         },
       ),

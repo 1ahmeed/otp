@@ -20,7 +20,7 @@ class _ResendTimerWidgetState extends State<ResendTimerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<OtpCubit, OtpsState>(
+    return BlocConsumer<OtpCubit, OtpState>(
       listener: (context, state) {
         if(state is ResendOtpSuccessState ){
           context.read<OtpCubit>().startTimer();

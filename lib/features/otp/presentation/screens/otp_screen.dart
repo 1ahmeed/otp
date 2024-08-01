@@ -4,6 +4,8 @@ import 'package:otp_creative_minds/core/api/api_service/api_service.dart';
 import 'package:otp_creative_minds/core/api/dio_factory.dart';
 import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_button_otp.dart';
 import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_button_resend.dart';
+import 'package:otp_creative_minds/features/otp/presentation/screens/test_screen.dart';
+import '../../../../config/notifications/local_notification_service.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../generated/l10n.dart';
 
@@ -24,6 +26,27 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+  @override
+  void initState() {
+    listenToNotificationStream();
+    super.initState();
+  }
+  void listenToNotificationStream() {
+    LocalNotificationService.streamController.stream.listen(
+          (notificationResponse) {
+        // log(notificationResponse.id!.toString());
+        // log(notificationResponse.payload!.toString());
+        //logic to get product from database.
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => TestNotificationScreen(data: DataX(title: notificationResponse.id!.toString(),
+                body: notificationResponse.payload!.toString()),),
+          ),
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Builder(

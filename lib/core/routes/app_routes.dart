@@ -8,17 +8,17 @@ import 'package:otp_creative_minds/features/otp/domain/use_case/resend_otp_use_c
 import 'package:otp_creative_minds/features/otp/domain/use_case/verify_otp_use_case.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/otp_screen.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/profile_screen.dart';
-import '../../core/utils/app_string.dart';
-import '../../features/otp/data/repo_impl/otp_repo_impl.dart';
 import '../../features/otp/presentation/cubit/otp_cubit/otp_cubit.dart';
  import '../../injectable_container.dart';
-import '../api/api_service/api_service.dart';
-import '../api/dio_factory.dart';
+import '../../features/otp/presentation/screens/test_screen.dart';
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 abstract class AppRouter {
   static const String initialRoute = '/';
   static const String profileScreen = '/profileScreen';
+  static const String test = '/test';
   static final routers = GoRouter(
+    // navigatorKey: NavigationService.navigationKey,
     routes: [
       GoRoute(
         path: initialRoute,
@@ -33,6 +33,10 @@ abstract class AppRouter {
         builder: (context, state) => ProfileScreen(
           verifyOtpEntity: state.extra as VerifyOtpEntity,
         ),
+      ),
+      GoRoute(
+        path: test,
+        builder: (context, state) => TestNotificationScreen(data:state.extra as DataX ,),
       ),
     ],
   );

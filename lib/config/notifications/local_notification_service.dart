@@ -3,8 +3,12 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+
+import '../../core/routes/app_routes.dart';
+import '../../features/otp/presentation/screens/test_screen.dart';
 
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -12,10 +16,14 @@ class LocalNotificationService {
   static StreamController<NotificationResponse> streamController =
   StreamController();
   static onTap(NotificationResponse notificationResponse) {
-    // log(notificationResponse.id!.toString());
-    // log(notificationResponse.payload!.toString());
     streamController.add(notificationResponse);
-    // Navigator.push(context, route);
+    // print("=========local notification ===============");
+    // print(notificationResponse.id!.toString());
+    // print(notificationResponse.payload!.toString());
+    // AppRouter.routers.push(AppRouter.test,extra: DataX(
+    //     body: notificationResponse.id!.toString(),
+    //     title: notificationResponse.payload!.toString())
+    // );
   }
 
   static Future init() async {
