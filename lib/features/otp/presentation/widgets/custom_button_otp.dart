@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../core/routes/app_routes.dart';
-import '../cubit/otp_cubit/otp_cubit.dart';
-import '../screens/profile_screen.dart';
+ import '../cubit/otp_cubit/otp_cubit.dart';
 
 class CustomButtonCheckOtp extends StatelessWidget {
   const CustomButtonCheckOtp(
@@ -25,13 +22,7 @@ class CustomButtonCheckOtp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<OtpCubit, OtpState>(
-      listener: (context, state) {
-        if (state is VerifyOtpSuccessState) {
-          GoRouter.of(context)
-              .push(AppRouter.profileScreen, extra: state.verifyOtpEntity);
-        }
-      },
+    return BlocBuilder<OtpCubit, OtpState>(
       builder: (context, state) {
         return SizedBox(
           height: 60,

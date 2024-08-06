@@ -1,19 +1,23 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:otp_creative_minds/features/otp/data/models/verify_otp_model.dart';
-import 'package:otp_creative_minds/features/otp/presentation/screens/otp_screen.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:otp_creative_minds/config/route/app_router.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/test_screen.dart';
 
-import '../../core/routes/app_routes.dart';
+
+ import '../navigation_service.dart';
 import 'local_notification_service.dart';
 
 class PushNotificationsService {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
+  static StreamController<RemoteMessage> streamController =
+  StreamController();
+  static onTap(NotificationResponse notificationResponse) {
 
+  }
   static Future init() async {
     await messaging.requestPermission();
     await messaging.getToken().then((value) {
@@ -56,10 +60,11 @@ class PushNotificationsService {
       print(message.data.toString());
       print(message.notification!.title);
       print(message.notification!.body);
-      AppRouter.routers.push(AppRouter.test,extra: DataX(
-        body: message.notification!.body!,
-        title: message.notification!.title!)
-      );
+        NavigationService service = NavigationService();
+        service.push(TestNotificationRoute(
+          data: DataX(title: message.notification!.title!, body: message.notification!.body!),
+        ));
+
       print("************************************");
     });
   }

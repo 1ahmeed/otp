@@ -7,12 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/config/notifications/local_notification_service.dart';
-import 'package:otp_creative_minds/core/routes/app_routes.dart';
-import 'package:otp_creative_minds/core/utils/app_string.dart';
+ import 'package:otp_creative_minds/core/utils/app_string.dart';
 import 'package:otp_creative_minds/core/utils/cache_data.dart';
 import 'package:otp_creative_minds/core/utils/theme.dart';
  import 'config/notifications/push_notification_service.dart';
+import 'config/route/app_router.dart';
 import 'features/otp/presentation/bloc/App_bloc/app_bloc.dart';
+import 'features/otp/presentation/cubit/otp_cubit/otp_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'injectable_container.dart';
@@ -28,27 +29,34 @@ void main() async {
   await configureInjection(Environment.dev);
   await PushNotificationsService.init();
    await LocalNotificationService.init();
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(), // Wrap your app
-  ));
+  // runApp(DevicePreview(
+  //   enabled: !kReleaseMode,
+  //   builder: (context) => MyApp(), // Wrap your app
+  // ));
+  runApp(MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
     MyApp({
     super.key,
   });
+
   static bool? mode = CacheData.getData(key: AppStrings.modeKey);
   static String? lang = CacheData.getData(key: AppStrings.localeKey);
+    final _appRouter =  AppRouter();
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) =>
           getIt<AppBloc>()..add(const AppEvent.getSavedLocaleEvent())
             ..add(const AppEvent.getSavedModeEvent()),
-        )
+        ),
+        BlocProvider(
+          create: (context) =>getIt<OtpCubit>()..resendOtp(context: context),
+        ),
       ],
       child: BlocConsumer<AppBloc, AppState>(
         listener: (context, state) {
@@ -58,6 +66,7 @@ class MyApp extends StatelessWidget {
           );
         },
         builder: (context, state) {
+          // final _appRouter =  AppRouter();
           return MaterialApp.router(
             locale: lang != null ? Locale(lang!) : null,
             theme: AppTheme.lightTheme,
@@ -86,7 +95,7 @@ class MyApp extends StatelessWidget {
             },
             builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
-            routerConfig: AppRouter.routers,
+            routerConfig: _appRouter.config(),
 
           );
         },

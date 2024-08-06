@@ -19,7 +19,7 @@ class OtpCubit extends Cubit<OtpState> {
   static OtpCubit? get(context) => BlocProvider.of(context);
 
 
-  // final OtpRepo otpRepo;
+
   final VerifyOtpUseCase verifyOtpUseCase;
   final ResendOtpUseCase resendOtpUseCase;
   final formKey = GlobalKey<FormState>();
@@ -42,7 +42,9 @@ class OtpCubit extends Cubit<OtpState> {
         if (counter! > 0) {
           counter = counter! - 1;
           // print("counter $counter");
-          emit(ChangeTimerState(counter: counter!));
+          if (!isClosed) {
+            emit(ChangeTimerState(counter: counter!));
+          }
         }
       }
     });
@@ -53,12 +55,12 @@ class OtpCubit extends Cubit<OtpState> {
     var response = await resendOtpUseCase
         .call(ResendOtpRequest(countryCode: "+966", phone: "511111111"));
     response.fold((error) {
-      SnackBarMessage.showErrorSnackBar(
-          message: error.errorMessage, context: context);
+      // SnackBarMessage.showErrorSnackBar(
+      //     message: error.errorMessage, context: context);
       emit(ResendOtpErrorState(error: error.errorMessage));
     }, (response) {
-      SnackBarMessage.showSuccessSnackBar(
-          message: response.message!, context: context);
+      // SnackBarMessage.showSuccessSnackBar(
+      //     message: response.message!, context: context);
       emit(ResendOtpSuccessState(
         resendOtpModel: response,
       ));

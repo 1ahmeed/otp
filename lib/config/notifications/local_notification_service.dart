@@ -1,18 +1,20 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:math';
+ import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+import 'package:otp_creative_minds/config/route/app_router.dart';
+import 'package:otp_creative_minds/features/otp/presentation/screens/profile_screen.dart';
 
-import '../../core/routes/app_routes.dart';
-import '../../features/otp/presentation/screens/test_screen.dart';
+import '../navigation_service.dart';
+
 
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
+  static NavigationService service = NavigationService();
   static StreamController<NotificationResponse> streamController =
   StreamController();
   static onTap(NotificationResponse notificationResponse) {
@@ -20,6 +22,9 @@ class LocalNotificationService {
     // print("=========local notification ===============");
     // print(notificationResponse.id!.toString());
     // print(notificationResponse.payload!.toString());
+
+
+    // service.pushTo(ProfileScreen());
     // AppRouter.routers.push(AppRouter.test,extra: DataX(
     //     body: notificationResponse.id!.toString(),
     //     title: notificationResponse.payload!.toString())

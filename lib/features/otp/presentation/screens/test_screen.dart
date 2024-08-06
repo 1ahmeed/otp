@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+ import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 class DataX{
   final String title;
@@ -7,7 +8,7 @@ class DataX{
   DataX({required this.title, required this.body});
 }
 
-
+@RoutePage()
 class TestNotificationScreen extends StatelessWidget {
   const TestNotificationScreen({super.key,this.data});
 final DataX? data;
