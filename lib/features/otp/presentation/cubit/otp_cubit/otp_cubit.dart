@@ -50,17 +50,13 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void resendOtp({String? countryCode, String? phone,   context}) async {
+  void resendOtp({String? countryCode, String? phone,}) async {
     emit(ResendOtpLoadingState());
     var response = await resendOtpUseCase
         .call(ResendOtpRequest(countryCode: "+966", phone: "511111111"));
     response.fold((error) {
-      // SnackBarMessage.showErrorSnackBar(
-      //     message: error.errorMessage, context: context);
       emit(ResendOtpErrorState(error: error.errorMessage));
     }, (response) {
-      // SnackBarMessage.showSuccessSnackBar(
-      //     message: response.message!, context: context);
       emit(ResendOtpSuccessState(
         resendOtpModel: response,
       ));

@@ -8,16 +8,16 @@ import 'package:otp_creative_minds/config/route/app_router.dart';
 import 'package:otp_creative_minds/features/otp/presentation/screens/test_screen.dart';
 
 
- import '../navigation_service.dart';
+ import '../../injectable_container.dart';
 import 'local_notification_service.dart';
 
 class PushNotificationsService {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
   static StreamController<RemoteMessage> streamController =
   StreamController();
-  static onTap(NotificationResponse notificationResponse) {
-
-  }
+  // static onTap(NotificationResponse notificationResponse) {
+  //
+  // }
   static Future init() async {
     await messaging.requestPermission();
     await messaging.getToken().then((value) {
@@ -28,12 +28,12 @@ class PushNotificationsService {
       // sendTokenToServer(value);
     });
     //back ground  & terminated
-      FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+    FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     //foreground
     handleForegroundMessage();
-    //on message open app
-    handleOnMessageOpenedAppTest1();
 
+    handleNotificationWhenAppKilled();
+    //on message open app
     handleOnMessageOpenedApp();
   }
 
@@ -43,10 +43,9 @@ class PushNotificationsService {
     log(message.notification?.title ?? 'null');
   }
 
-  static void handleForegroundMessage() {
-    FirebaseMessaging.onMessage.listen(
+  static Future<void> handleForegroundMessage() async {
+   FirebaseMessaging.onMessage.listen(
           (RemoteMessage message) {
-        // show local notification
         LocalNotificationService.showBasicNotification(
           message,
         );
@@ -54,26 +53,25 @@ class PushNotificationsService {
     );
   }
 
-  static void handleOnMessageOpenedApp() {
+  static Future<void> handleOnMessageOpenedApp() async {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print("*************************on message open app");
       print(message.data.toString());
       print(message.notification!.title);
       print(message.notification!.body);
-        NavigationService service = NavigationService();
-        service.push(TestNotificationRoute(
-          data: DataX(title: message.notification!.title!, body: message.notification!.body!),
-        ));
-
+      getIt<AppRouter>().push(TestNotificationRoute());
       print("************************************");
     });
   }
 
-  ///test When the app is completely closed (not in the background)
-  static void handleOnMessageOpenedAppTest1() {
+  static Future<void> handleNotificationWhenAppKilled() async {
     // workaround for onLaunch: When the app is completely closed (not in the background) and opened directly from the push notification
     FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
-      print('getInitialMessage data: ');
+      if (message != null) {
+        print("app is terminated");
+        getIt<AppRouter>().push(TestNotificationRoute());
+      }
+
     });
   }
 

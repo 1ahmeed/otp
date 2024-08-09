@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:otp_creative_minds/core/api/api_service/api_service.dart';
 import 'package:otp_creative_minds/core/api/failuer.dart';
 import 'package:otp_creative_minds/features/otp/data/models/resend_otp_model.dart';
 

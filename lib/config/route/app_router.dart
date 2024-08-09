@@ -17,3 +17,4 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: TestNotificationRoute.page,),
   ];
 }
+

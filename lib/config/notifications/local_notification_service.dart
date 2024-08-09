@@ -1,29 +1,31 @@
 import 'dart:async';
  import 'dart:math';
-
-import 'package:auto_route/auto_route.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
  import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:otp_creative_minds/config/route/app_router.dart';
-import 'package:otp_creative_minds/features/otp/presentation/screens/profile_screen.dart';
-
-import '../navigation_service.dart';
+import '../../features/otp/presentation/screens/test_screen.dart';
+import '../../injectable_container.dart';
+import '../../main.dart';
 
 
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
-  static NavigationService service = NavigationService();
   static StreamController<NotificationResponse> streamController =
   StreamController();
   static onTap(NotificationResponse notificationResponse) {
+    print("local notification");
     streamController.add(notificationResponse);
+    getIt<AppRouter>().push(TestNotificationRoute());
+    // navigatorKey.currentState!.push(MaterialPageRoute(builder:
+    //     (context) =>const TestNotificationScreen() ,)
+    // );
     // print("=========local notification ===============");
     // print(notificationResponse.id!.toString());
     // print(notificationResponse.payload!.toString());
-
-
     // service.pushTo(ProfileScreen());
     // AppRouter.routers.push(AppRouter.test,extra: DataX(
     //     body: notificationResponse.id!.toString(),
@@ -38,7 +40,18 @@ class LocalNotificationService {
     );
     flutterLocalNotificationsPlugin.initialize(
       settings,
-      onDidReceiveNotificationResponse: onTap,
+      onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) {
+        print("local notification");
+        getIt<AppRouter>().push(TestNotificationRoute());
+        // print("=========local notification ===============");
+        // print(notificationResponse.id!.toString());
+        // print(notificationResponse.payload!.toString());
+        // service.pushTo(ProfileScreen());
+        // AppRouter.routers.push(AppRouter.test,extra: DataX(
+        //     body: notificationResponse.id!.toString(),
+        //     title: notificationResponse.payload!.toString())
+        // );
+      },
       onDidReceiveBackgroundNotificationResponse: onTap,
     );
   }

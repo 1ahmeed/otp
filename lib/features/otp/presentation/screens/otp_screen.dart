@@ -4,14 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_creative_minds/config/route/app_router.dart';
 import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_button_otp.dart';
 import 'package:otp_creative_minds/features/otp/presentation/widgets/custom_button_resend.dart';
-import 'package:otp_creative_minds/features/otp/presentation/screens/test_screen.dart';
-import '../../../../config/notifications/local_notification_service.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/widgets/show_snack_bar.dart';
 import '../../../../generated/l10n.dart';
-
-import '../../../../injectable_container.dart';
-import '../../data/repo_impl/otp_repo_impl.dart';
 import '../cubit/otp_cubit/otp_cubit.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/otp_field_widget.dart';
@@ -30,28 +25,7 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   @override
   void initState() {
-    listenToNotificationStream();
     super.initState();
-  }
-
-  void listenToNotificationStream() {
-    LocalNotificationService.streamController.stream.listen(
-      (notificationResponse) {
-        // log(notificationResponse.id!.toString());
-        // log(notificationResponse.payload!.toString());
-        //logic to get product from database.
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => TestNotificationScreen(
-              data: DataX(
-                  title: notificationResponse.id!.toString(),
-                  body: notificationResponse.payload!.toString()),
-            ),
-          ),
-        );
-      },
-    );
   }
 
   @override
@@ -122,7 +96,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       backgroundColor: Colors.red,
                       text: "resend",
                       onPressed: () {
-                        OtpCubit.get(context)!.resendOtp(context: context);
+                        OtpCubit.get(context)!.resendOtp();
                       },
                     )
                   ],

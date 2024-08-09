@@ -14,13 +14,15 @@ class TestNotificationScreen extends StatelessWidget {
 final DataX? data;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(data?.title==""?"null":data!.title),
-            Text(data?.body??"null")
+            // Text(data?.title==""?"null":data!.title),
+            Text("data"),
+            Text("data"),
+            // Text(data?.body??"null")
           ],
         ),
       ),

@@ -3,9 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:otp_creative_minds/core/use_cases/use_case.dart';
 import 'package:otp_creative_minds/features/otp/domain/use_case/get_save_lang_use_case.dart';
-import '../../../../../core/utils/app_string.dart';
-import '../../../../../core/widgets/show_snack_bar.dart';
-import '../../../data/data_sources/lang_mode_data_source.dart';
 import '../../../domain/use_case/change_lang_use_case.dart';
 import '../../../domain/use_case/change_mode_use_case.dart';
 import '../../../domain/use_case/get_save_mode_use_case.dart';
@@ -45,7 +42,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
                     print("get data success");
             emit(AppState.changeLocaleSuccess(lang));
                   } );
-          // String lang = await langAndModeDataSource.getSavedLang();
 
         },
        changeModeEvent: (isDark)async {

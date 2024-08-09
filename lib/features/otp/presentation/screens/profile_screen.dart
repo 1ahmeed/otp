@@ -26,12 +26,6 @@ final VerifyOtpEntity? verifyOtpEntity;
               height: 20,
             ),
             ///images
-            // CircleAvatar(
-            //   radius: 70,
-            //   // backgroundImage: NetworkImage(
-            //   //   model.image!, scale: .1),
-            //   child:
-            // ),
              Image.network(  verifyOtpEntity?.image??"",width: 100,height: 100,),
             const SizedBox(
               height: 50,

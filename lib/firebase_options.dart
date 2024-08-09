@@ -14,6 +14,8 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+// android AIzaSyD0zfaI-hO-oB7ozYgzG7iQXIKHJDV6Ilk
+//ios AIzaSyAwPSmtmV5hmlWsdSPUBmSt_FFBvW_Ie3E
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -50,7 +52,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD0zfaI-hO-oB7ozYgzG7iQXIKHJDV6Ilk',
+    apiKey: '',
     appId: '1:58548552090:android:c2f21869d6e5679232fa23',
     messagingSenderId: '58548552090',
     projectId: 'test-chat-aaf5f',
@@ -59,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAwPSmtmV5hmlWsdSPUBmSt_FFBvW_Ie3E',
+    apiKey: '',
     appId: '1:58548552090:ios:8e91e5a1c2beb61832fa23',
     messagingSenderId: '58548552090',
     projectId: 'test-chat-aaf5f',
